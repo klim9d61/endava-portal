@@ -1,7 +1,7 @@
 ## Changelog
 
 ```changelog
- - NASA: Description of Change
+ - Endava Portal: Description of Change
 ```
 
 ## Change Type
