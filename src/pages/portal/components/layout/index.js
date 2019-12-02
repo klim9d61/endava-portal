@@ -1,7 +1,8 @@
 import React from 'react'
 import { Layout } from 'antd'
 
-import { Content } from '../../../../common/ui-kit'
+import { Content } from 'common/ui-kit'
+
 import Sidebar from '../sidebar'
 
 function GridLayout() {

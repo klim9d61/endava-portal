@@ -2,9 +2,10 @@ import React from 'react'
 import { Layout } from 'antd'
 import { Route, Switch } from 'react-router'
 
-import { LoginPage, NotFoundPage, PortalPage } from '../../../pages'
-import { Content } from '../../../common/ui-kit'
-import PATH_URL from '../../routes'
+import { LoginPage, NotFoundPage, PortalPage } from 'pages'
+import { Content } from 'common/ui-kit'
+import PATH_URL from 'core/routes'
+
 import Header from '../header'
 import Footer from '../footer'
 
