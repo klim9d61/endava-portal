@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Sider } from '../../../../common/ui-kit'
+import { Sider } from 'common/ui-kit'
 
 function Sidebar() {
   const [collapsed, setCollapsed] = useState(true)

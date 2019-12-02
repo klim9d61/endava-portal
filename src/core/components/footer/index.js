@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Footer } from '../../../common/ui-kit'
+import { Footer } from 'common/ui-kit'
 
 function PageFooter() {
   return (
