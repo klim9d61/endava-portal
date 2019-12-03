@@ -6,19 +6,19 @@ export default [
     component: LoginPage,
   },
   {
-    path: '/portal',
+    path: '/home',
     component: PortalPage,
     routes: [
       {
-        path: '/portal/calendar',
+        path: '/home/calendar',
         component: 'Calendar',
       },
       {
-        path: '/portal/requestMaterials',
+        path: '/home/requestMaterials',
         component: 'Request Materials form',
       },
       {
-        path: '/portal/vacations',
+        path: '/home/vacations',
         component: 'Vacation forms',
       },
     ],

@@ -1,11 +1,10 @@
 import React from 'react'
-import { Switch } from 'react-router'
+import { Switch, Route } from 'react-router'
 import { Layout } from 'antd'
 
-import Routes from 'common/components/routes'
 import { Content } from 'common/ui-kit'
 import { Header, Footer } from 'core/components'
-import routes from 'core/routes'
+import { PortalPage, LoginPage, NotFoundPage } from 'pages/index'
 
 import './App.css'
 
@@ -15,7 +14,9 @@ function App() {
       <Header />
       <Content>
         <Switch>
-          <Routes routes={routes} />
+          <Route path="/home" component={PortalPage} />
+          <Route exact path="/login" component={LoginPage} />
+          <Route path="*" component={NotFoundPage} />
         </Switch>
       </Content>
       <Footer />
