@@ -18,7 +18,7 @@ const useInfiniteScroll = pageNumber => {
         setHasMore(news.articles.length > 0)
         setLoading(false)
       })
-      .catch(err => throw new Error(err))
+      .catch(err => Error(err))
   }, [pageNumber])
 
   return { isLoading, hasMore, news }

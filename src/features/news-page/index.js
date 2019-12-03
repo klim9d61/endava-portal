@@ -1,5 +1,5 @@
-import React, { useState, useRef, useCallback } from 'react'
-import { Spin } from 'antd'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
+import { Icon, Spin } from 'antd'
 
 import { StyledNewsContainer } from './styled-components'
 import useInfiniteScroll from './useInfiniteScroll'
@@ -7,10 +7,22 @@ import NewsCard from './NewsCard'
 
 const NewsPage = () => {
   const [pageNumber, setPageNumber] = useState(1)
-
+  const [showButton, setButtonStatus] = useState(false)
   const { news, hasMore, isLoading } = useInfiniteScroll(pageNumber)
 
   const observer = useRef()
+
+  const handleScroll = () => {
+    if (window.pageYOffset > 300) {
+      setButtonStatus(true)
+      return
+    }
+    setButtonStatus(false)
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+  }, [])
 
   const lastLoadedNews = useCallback(
     node => {
@@ -59,6 +71,14 @@ const NewsPage = () => {
           )
         })}
       </Spin>
+      {showButton ? (
+        <Icon
+          onClick={() => window.scrollTo(0, 0)}
+          style={{ fontSize: 50 }}
+          type="up-circle"
+          theme="filled"
+        />
+      ) : null}
     </StyledNewsContainer>
   )
 }

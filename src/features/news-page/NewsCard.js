@@ -16,7 +16,7 @@ const NewsCard = ({
   source,
   published,
   sourceUrl,
-  description,
+  description = 'asdasd',
 }) => {
   const date = new Date(published).toLocaleString()
   return (

@@ -12,6 +12,17 @@ export const StyledNewsContainer = styled.div`
     display: flex;
     align-items: center;
   }
+  .anticon {
+    position: fixed;
+    opacity: 0.5;
+    margin-bottom: 3rem;
+    margin-right: 3rem;
+    right: 0;
+    bottom: 0;
+    &:hover {
+      opacity: 1;
+    }
+  }
 `
 
 export const StyledNewsPublishingDate = styled.div`
