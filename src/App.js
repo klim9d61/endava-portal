@@ -2,7 +2,7 @@ import React from 'react'
 
 import AppLayout from './core/components/layout'
 
-import './App.scss'
+import './App.css'
 
 function App() {
   return <AppLayout />
