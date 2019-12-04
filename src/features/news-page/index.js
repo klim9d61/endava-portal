@@ -71,14 +71,14 @@ const NewsPage = () => {
           )
         })}
       </Spin>
-      {showButton ? (
+      {showButton && (
         <Icon
           onClick={() => window.scrollTo(0, 0)}
           style={{ fontSize: 50 }}
           type="up-circle"
           theme="filled"
         />
-      ) : null}
+      )}
     </StyledNewsContainer>
   )
 }

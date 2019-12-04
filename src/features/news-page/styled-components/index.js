@@ -12,6 +12,17 @@ export const StyledNewsContainer = styled.div`
     display: flex;
     align-items: center;
   }
+  .ant-card-bordered {
+    border: none;
+  }
+  .ant-collapse
+    > .ant-collapse-item.ant-collapse-no-arrow
+    > .ant-collapse-header {
+    padding: 0;
+  }
+  .ant-collapse-borderless > .ant-collapse-item {
+    border: none;
+  }
   .anticon {
     position: fixed;
     opacity: 0.5;
