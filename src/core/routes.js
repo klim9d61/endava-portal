@@ -1,30 +1,41 @@
 import { LoginPage, PortalPage, NotFoundPage } from 'pages/index'
+import { Calendar, Vacations, Materials, News, Notifications } from 'features'
 
-export default [
+const routes = [
   {
     path: '/login',
     component: LoginPage,
   },
   {
-    path: '/home',
-    component: PortalPage,
-    routes: [
-      {
-        path: '/home/calendar',
-        component: 'Calendar',
-      },
-      {
-        path: '/home/requestMaterials',
-        component: 'Request Materials form',
-      },
-      {
-        path: '/home/vacations',
-        component: 'Vacation forms',
-      },
-    ],
+    path: '/404',
+    component: NotFoundPage,
   },
   {
     path: '/*',
-    component: NotFoundPage,
+    component: PortalPage,
+    routes: [
+      {
+        path: '/',
+        component: News,
+      },
+      {
+        path: '/calendar',
+        component: Calendar,
+      },
+      {
+        path: '/materials',
+        component: Materials,
+      },
+      {
+        path: '/vacations',
+        component: Vacations,
+      },
+      {
+        path: '/notifications',
+        component: Notifications,
+      },
+    ],
   },
 ]
+
+export default routes

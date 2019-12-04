@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom'
 const { Item, SubMenu } = Menu
 
 // eslint-disable-next-line import/prefer-default-export
-export const MenuCreator = menuListItems => {
-  return menuListItems.map(item => {
+export const MenuCreator = menuListItems =>
+  menuListItems.map(item => {
     return item.submenu.length ? (
       <SubMenu
         key={uuid()}
@@ -29,4 +29,3 @@ export const MenuCreator = menuListItems => {
       </Item>
     )
   })
-}

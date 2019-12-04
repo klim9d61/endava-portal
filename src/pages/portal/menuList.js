@@ -1,45 +1,34 @@
-export default [
+const menuList = [
   {
-    path: '/home',
+    path: '/',
     name: 'News',
     icon: 'read',
-    submenu: [
-      {
-        path: '/home/calendar',
-        name: 'Calendar 1',
-        icon: 'calendar',
-        submenu: [],
-      },
-      {
-        path: '/home/vacations',
-        name: 'Vacations 2',
-        icon: 'schedule',
-        submenu: [],
-      },
-      {
-        path: '/home/materials',
-        name: 'Materials 3',
-        icon: 'tool',
-        submenu: [],
-      },
-    ],
+    submenu: [],
   },
   {
-    path: '/home/calendar',
+    path: '/calendar',
     name: 'Calendar',
     icon: 'calendar',
     submenu: [],
   },
   {
-    path: '/home/vacations',
+    path: '/vacations',
     name: 'Vacations',
     icon: 'schedule',
     submenu: [],
   },
   {
-    path: '/home/materials',
+    path: '/materials',
     name: 'Materials',
     icon: 'tool',
     submenu: [],
   },
+  {
+    path: '/notifications',
+    name: 'Notifications',
+    icon: 'bell',
+    submenu: [],
+  },
 ]
+
+export default menuList

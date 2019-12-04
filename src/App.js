@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route } from 'react-router'
+import { Switch, Route, Redirect } from 'react-router'
 import { Layout } from 'antd'
 
 import { Content } from 'common/ui-kit'
@@ -8,15 +8,19 @@ import { PortalPage, LoginPage, NotFoundPage } from 'pages/index'
 
 import './App.css'
 
+const isLogged = true
+
 function App() {
   return (
     <Layout>
       <Header />
       <Content>
         <Switch>
-          <Route path="/home" component={PortalPage} />
           <Route exact path="/login" component={LoginPage} />
-          <Route path="*" component={NotFoundPage} />
+          <Route exact path="/404" component={NotFoundPage} />
+          <Route path="/*">
+            {isLogged ? <PortalPage /> : <Redirect to="/login" />}
+          </Route>
         </Switch>
       </Content>
       <Footer />
