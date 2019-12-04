@@ -1,5 +1,5 @@
 import React from 'react'
-import uuid from 'uuid'
+import * as shortId from 'short-id'
 import { Icon, Menu } from 'antd'
 import { Link } from 'react-router-dom'
 
@@ -7,25 +7,25 @@ const { Item, SubMenu } = Menu
 
 // eslint-disable-next-line import/prefer-default-export
 export const MenuCreator = menuListItems =>
-  menuListItems.map(item => {
-    return item.submenu.length ? (
+  menuListItems.map(({ submenu, path, name, icon }) =>
+    submenu.length ? (
       <SubMenu
-        key={uuid()}
+        key={shortId.generate()}
         title={
-          <Link to={item.path}>
-            <Icon type={item.icon} />
-            <span>{item.name}</span>
+          <Link to={path}>
+            <Icon type={icon} />
+            <span>{name}</span>
           </Link>
         }
       >
-        {MenuCreator(item.submenu)}
+        {MenuCreator(submenu)}
       </SubMenu>
     ) : (
-      <Item key={uuid()}>
-        <Link to={item.path}>
-          <Icon type={item.icon} />
-          <span>{item.name}</span>
+      <Item key={shortId.generate()}>
+        <Link to={path}>
+          <Icon type={icon} />
+          <span>{name}</span>
         </Link>
       </Item>
-    )
-  })
+    ),
+  )

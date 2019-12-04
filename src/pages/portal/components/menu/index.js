@@ -5,12 +5,10 @@ import { MenuCreator } from 'common/utils'
 
 import menuListItems from '../../menuList'
 
-function MenuList() {
-  return (
-    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" title="privet">
-      {MenuCreator(menuListItems)}
-    </Menu>
-  )
-}
+const MenuList = () => (
+  <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" title="privet">
+    {MenuCreator(menuListItems)}
+  </Menu>
+)
 
 export default MenuList

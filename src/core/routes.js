@@ -1,4 +1,4 @@
-import { LoginPage, PortalPage, NotFoundPage } from 'pages/index'
+import { LoginPage, PortalPage, NotFoundPage } from 'pages'
 import { Calendar, Vacations, Materials, News, Notifications } from 'features'
 
 const routes = [
