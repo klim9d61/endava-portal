@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 
 import { Sider } from 'common/ui-kit'
 
+import Menu from '../menu'
+
 function Sidebar() {
   const [collapsed, setCollapsed] = useState(true)
 
@@ -9,7 +11,7 @@ function Sidebar() {
 
   return (
     <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
-      Menu
+      <Menu />
     </Sider>
   )
 }
