@@ -16,7 +16,7 @@ function App() {
         <Switch>
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/404" component={NotFoundPage} />
-          <Route exact path="/*" component={PortalPage} />
+          <Route path="/*" component={PortalPage} />
         </Switch>
       </Content>
       <Footer />
