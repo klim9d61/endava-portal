@@ -77,4 +77,6 @@ LoginForm.propTypes = {
   }).isRequired,
 }
 
-export default Form.create({ name: 'normal_login' })(LoginForm)
+const LoginPage = Form.create({ name: 'normal_login' })(LoginForm)
+
+export default LoginPage
