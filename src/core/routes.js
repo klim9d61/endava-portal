@@ -1,5 +1,11 @@
 import { LoginPage, PortalPage, NotFoundPage } from 'pages'
-import { Calendar, Vacations, Materials, News, Notifications } from 'features'
+import {
+  Calendar,
+  Vacations,
+  RequestMaterials,
+  News,
+  Notifications,
+} from 'features'
 
 const routes = [
   {
@@ -24,7 +30,7 @@ const routes = [
       },
       {
         path: '/materials',
-        component: Materials,
+        component: RequestMaterials,
       },
       {
         path: '/vacations',
