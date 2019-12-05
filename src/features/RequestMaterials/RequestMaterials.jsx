@@ -118,4 +118,6 @@ RequestMaterials.propTypes = {
   }).isRequired,
 }
 
-export default Form.create({ name: 'requestMaterials' })(RequestMaterials)
+const withForm = Form.create({ name: 'requestMaterials' })
+
+export default withForm(RequestMaterials)
