@@ -1,5 +1,5 @@
-import { LoginPage, PortalPage, NotFoundPage } from 'pages'
-import { Calendar, Vacations, Materials, News, Notifications } from 'features'
+import { LoginPage, PortalPage, NotFoundPage, Notifications } from 'pages'
+import { Calendar, Vacations, Materials, News } from 'features'
 
 const routes = [
   {

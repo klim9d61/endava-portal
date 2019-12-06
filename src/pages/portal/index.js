@@ -12,7 +12,7 @@ function PortalPage() {
     <Layout style={{ minHeight: '100vh' }}>
       <Sidebar />
       <Layout>
-        <Content style={{ margin: '0 16px' }}>
+        <Content style={{ margin: '0' }}>
           <Switch>
             <Route exact path="/calendar" component={Calendar} />
             <Route exact path="/vacations" component={Vacations} />
