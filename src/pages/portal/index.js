@@ -18,7 +18,9 @@ function PortalPage() {
     <Layout style={{ minHeight: '100vh' }}>
       <Sidebar />
       <Layout>
-        <Content style={{ margin: '0 16px' }}>
+        <Content
+          style={{ margin: '0', display: 'flex', justifyContent: 'center' }}
+        >
           <Switch>
             <Route exact path="/calendar" component={CalendarRBC} />
             <Route exact path="/vacations" component={Vacations} />
