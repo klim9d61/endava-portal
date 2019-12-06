@@ -32,6 +32,13 @@ const RequestMaterials = ({ form }) => {
   const { TextArea } = Input
   return (
     <Form
+      style={{
+        position: 'absolute',
+        top: '50%',
+        left: '55%',
+        transform: 'translate(-50%, -50%)',
+        width: '50%',
+      }}
       labelCol={{ span: 5 }}
       wrapperCol={{ span: 12 }}
       onSubmit={handleSubmit}
