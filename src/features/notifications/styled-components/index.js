@@ -3,16 +3,18 @@ import { List } from 'antd'
 
 export const NotificationsContainer = styled(List)`
   .ant-list-items {
-    border-radius: 3px;
-    box-shadow: 2px 2px 21px 1px rgba(0, 0, 0, 0.2);
+    background: transparent;
   }
 
   .ant-list-item {
+    background-color: #fff;
+    margin: 1rem 0;
     padding: 0.5rem;
     transition: all 0.3s ease-in-out;
+    cursor: pointer;
 
     &:hover {
-      background-color: #ecebf3;
+      background-color: #fcfafa;
     }
   }
 

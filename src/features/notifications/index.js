@@ -1,10 +1,10 @@
 import React from 'react'
 import { NotificationsContainer } from './styled-components'
 import { NotificationItem } from './NotificationItem'
-import { listData } from './constants'
+import listData from './constants'
 
 const styles = {
-  width: '100%',
+  width: '90%',
 }
 
 const Notifications = () => (
