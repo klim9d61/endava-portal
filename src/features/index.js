@@ -2,9 +2,10 @@ import React from 'react'
 
 import RequestMaterials from 'features/RequestMaterials/RequestMaterials'
 
-const Calendar = () => <div> Calendar </div>
+import CalendarRBC from './calendar-events'
+
 const Vacations = () => <div>Vacations</div>
 const Notifications = () => <div>Notifications</div>
 const News = () => <div>News</div>
 
-export { Notifications, Calendar, RequestMaterials, Vacations, News }
+export { Notifications, CalendarRBC, RequestMaterials, Vacations, News }

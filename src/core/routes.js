@@ -1,6 +1,6 @@
 import { LoginPage, PortalPage, NotFoundPage } from 'pages'
 import {
-  Calendar,
+  CalendarRBC,
   Vacations,
   RequestMaterials,
   News,
@@ -26,7 +26,7 @@ const routes = [
       },
       {
         path: '/calendar',
-        component: Calendar,
+        component: CalendarRBC,
       },
       {
         path: '/materials',
