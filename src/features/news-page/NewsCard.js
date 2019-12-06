@@ -39,7 +39,9 @@ const NewsCard = ({
           }
           key={title}
         >
-          <a href={sourceUrl}>{source}</a>
+          <a target="_blank" rel="noopener noreferrer" href={sourceUrl}>
+            {source}
+          </a>
           <br />
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum ex
           impedit itaque minima nisi nobis nulla numquam obcaecati pariatur

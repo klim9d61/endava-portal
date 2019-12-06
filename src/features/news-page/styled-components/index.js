@@ -20,8 +20,14 @@ export const StyledNewsContainer = styled.div`
     > .ant-collapse-header {
     padding: 0;
   }
+  .ant-card-head-title {
+    color: #001529;
+  }
   .ant-collapse-borderless > .ant-collapse-item {
     border: none;
+  }
+  .ant-spin-dot-item {
+    background: red;
   }
   .anticon {
     position: fixed;
@@ -38,11 +44,11 @@ export const StyledNewsContainer = styled.div`
 
 export const StyledNewsPublishingDate = styled.div`
   display: flex;
-  justify-content: flex-end;
   align-self: flex-end;
 `
 
 export const StyledCard = styled(Card)`
+  background: #001529;
   width: 100%;
   .ant-card-body {
     display: flex;
