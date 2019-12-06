@@ -6,8 +6,6 @@ import { Content } from 'common/ui-kit'
 import { Header, Footer } from 'core/components'
 import { PortalPage, LoginPage, NotFoundPage } from 'pages'
 
-import './App.css'
-
 function App() {
   return (
     <Layout>
