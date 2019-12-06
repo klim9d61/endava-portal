@@ -48,7 +48,6 @@ export const StyledNewsPublishingDate = styled.div`
 `
 
 export const StyledCard = styled(Card)`
-  background: #001529;
   width: 100%;
   .ant-card-body {
     display: flex;
