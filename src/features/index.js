@@ -1,9 +1,10 @@
 import React from 'react'
 import Notifications from './notifications'
 
-const Calendar = () => <div> Calendar </div>
+import CalendarRBC from './calendar-events'
+
 const Vacations = () => <div>Vacations</div>
 const Materials = () => <div>Materials</div>
 const News = () => <div>News</div>
 
-export { Calendar, Materials, Vacations, News, Notifications }
+export { Notifications, CalendarRBC, Materials, Vacations, News }
