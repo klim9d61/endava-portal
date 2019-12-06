@@ -14,7 +14,8 @@
     "react-scripts": "3.2.0",
     "short-id": "0.1.0-1",
     "styled-components": "^4.4.1",
-    "styled-system": "^5.1.2"
+    "styled-system": "^5.1.2",
+    "prop-types": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

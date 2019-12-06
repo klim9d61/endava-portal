@@ -17,7 +17,7 @@ const CalendarRBC = () => {
   } = config
 
   return (
-    <div className="calendar-rbc-container">
+    <div className="calendar-rbc-container" style={{ width: '100%' }}>
       <Calendar
         defaultDate={defaultDate}
         drilldownView={drilldownView}
