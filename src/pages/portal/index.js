@@ -5,7 +5,7 @@ import { Redirect, Route, Switch } from 'react-router'
 import {
   CalendarRBC,
   Vacations,
-  Materials,
+  RequestMaterials,
   News,
   Notifications,
 } from 'features'
@@ -22,7 +22,7 @@ function PortalPage() {
           <Switch>
             <Route exact path="/calendar" component={CalendarRBC} />
             <Route exact path="/vacations" component={Vacations} />
-            <Route exact path="/materials" component={Materials} />
+            <Route exact path="/materials" component={RequestMaterials} />
             <Route exact path="/notifications" component={Notifications} />
             <Route exact path="/" component={News} />
             <Route default>
