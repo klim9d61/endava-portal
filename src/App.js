@@ -6,6 +6,8 @@ import { Content } from 'common/ui-kit'
 import { Header, Footer } from 'core/components'
 import { PortalPage, LoginPage, NotFoundPage } from 'pages'
 
+import PrivateRoute from './common/components/routes/PrivateRoute'
+
 function App() {
   return (
     <Layout>
@@ -14,7 +16,7 @@ function App() {
         <Switch>
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/404" component={NotFoundPage} />
-          <Route path="/*" component={PortalPage} />
+          <PrivateRoute path="/*" component={PortalPage} />
         </Switch>
       </Content>
       <Footer />

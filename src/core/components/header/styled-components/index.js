@@ -55,11 +55,12 @@ export const CurrentUser = styled.div`
   }
 `
 
-export const ExitLink = styled.div`
+export const ExitLink = styled.a`
   a {
     padding-bottom: 5px;
     border-bottom: 3px solid transparent;
     transition: 0.3s ease-in-out;
+
     &:hover {
       border-color: #de411b;
     }
