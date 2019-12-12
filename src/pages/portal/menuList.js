@@ -1,5 +1,11 @@
 const menuList = [
   {
+    path: '/profile',
+    name: 'Profile',
+    icon: 'user',
+    submenu: [],
+  },
+  {
     path: '/',
     name: 'News',
     icon: 'read',

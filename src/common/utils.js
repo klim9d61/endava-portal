@@ -10,6 +10,7 @@ export const MenuCreator = menuListItems =>
   menuListItems.map(({ submenu, path, name, icon }) =>
     submenu.length ? (
       <SubMenu
+        style={{position: 'sticky'}}
         key={shortId.generate()}
         title={
           <Link to={path}>
