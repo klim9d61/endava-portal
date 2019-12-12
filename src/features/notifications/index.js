@@ -1,6 +1,7 @@
 import React from 'react'
-import { NotificationsContainer } from './styled-components'
-import { NotificationItem } from './NotificationItem'
+
+import NotificationsContainer from './styled-components'
+import NotificationItem from './NotificationItem'
 import listData from './constants'
 
 const styles = {

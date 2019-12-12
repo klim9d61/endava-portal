@@ -1,7 +1,8 @@
 import React from 'react'
 import { List, Avatar } from 'antd'
+import { shape, string } from 'prop-types'
 
-export const NotificationItem = ({ item }) => (
+const NotificationItem = ({ item }) => (
   <List.Item
     key={item.title}
     extra={
@@ -20,3 +21,16 @@ export const NotificationItem = ({ item }) => (
     {item.content}
   </List.Item>
 )
+
+NotificationItem.propTypes = {
+  item: shape({
+    item: string.isRequired,
+    href: string.isRequired,
+    title: string.isRequired,
+    description: string.isRequired,
+    avatar: string.isRequired,
+    content: string.isRequired,
+  }).isRequired,
+}
+
+export default NotificationItem
