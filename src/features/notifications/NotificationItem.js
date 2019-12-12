@@ -24,7 +24,6 @@ const NotificationItem = ({ item }) => (
 
 NotificationItem.propTypes = {
   item: shape({
-    item: string.isRequired,
     href: string.isRequired,
     title: string.isRequired,
     description: string.isRequired,
