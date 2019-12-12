@@ -4,6 +4,7 @@ import {
   Vacations,
   RequestMaterials,
   News,
+  Profile,
   Notifications,
 } from 'features'
 
@@ -39,6 +40,10 @@ const routes = [
       {
         path: '/notifications',
         component: Notifications,
+      },
+      {
+        path: '/profile',
+        component: Profile,
       },
     ],
   },
