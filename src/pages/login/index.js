@@ -4,10 +4,47 @@ import { shape, func } from 'prop-types'
 
 import logo from 'assets/favicon.ico'
 
+import users from '../../__mocks__/mock-data'
+
 import { Wrapper, CardTitle, FormButton } from './styles'
 
-const LoginForm = ({ form }) => {
-  const { getFieldDecorator } = form
+const LoginForm = ({ form, history }) => {
+  const { getFieldDecorator, getFieldsValue, validateFields } = form
+
+  const addToLocalStorage = user => {
+    localStorage.setItem(
+      'currentUser',
+      JSON.stringify({
+        id: user.id,
+        username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        role: user.role,
+        img: user.img,
+        project: user.project,
+        position: user.position,
+        token: Math.random()
+          .toString(35)
+          .substr(2),
+      }),
+    )
+    history.push('/')
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    setTimeout(() => {
+      const { username, password } = getFieldsValue()
+      const user = users.find(
+        x => x.username === username && x.password === password,
+      )
+      validateFields(err => {
+        if (!err && user) {
+          addToLocalStorage(user)
+        }
+      })
+    }, 700)
+  }
 
   return (
     <Wrapper>
@@ -29,7 +66,7 @@ const LoginForm = ({ form }) => {
           </h2>
           <img src={logo} style={{ height: '70%', width: '20%' }} alt="logo" />
         </CardTitle>
-        <Form className="login-form">
+        <Form onSubmit={handleSubmit} className="login-form">
           <Form.Item>
             {getFieldDecorator('username', {
               rules: [
@@ -74,6 +111,9 @@ const LoginForm = ({ form }) => {
 LoginForm.propTypes = {
   form: shape({
     getFieldDecorator: func.isRequired,
+  }).isRequired,
+  history: shape({
+    push: func.isRequired,
   }).isRequired,
 }
 

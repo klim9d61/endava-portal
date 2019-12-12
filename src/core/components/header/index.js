@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { shape, func } from 'prop-types'
+import { withRouter } from 'react-router'
 
 import Logo from 'assets/portal-logo.png'
 import UserLogo from 'assets/user-logo.png'
@@ -12,25 +14,40 @@ import {
   NavigationUserInfo,
 } from './styled-components'
 
-const PageHeader = () => (
-  <StyledNavigationBar>
-    <NavigationLogo>
-      <Link to="/">
-        <img src={Logo} alt="nav-logo" />
-      </Link>
-    </NavigationLogo>
-    <NavigationUserInfo>
-      <CurrentUser>
-        <Link to="/">
-          <img src={UserLogo} alt="logo-img" />
-          <strong>John Doe</strong>
-        </Link>
-      </CurrentUser>
-      <ExitLink>
-        <Link to="/login">Log out</Link>
-      </ExitLink>
-    </NavigationUserInfo>
-  </StyledNavigationBar>
-)
+const PageHeader = ({ history }) => {
+  const user = JSON.parse(localStorage.getItem('currentUser'))
 
-export default PageHeader
+  const logout = () => {
+    setTimeout(() => {
+      localStorage.removeItem('currentUser')
+      history.push('/login')
+    }, 700)
+  }
+
+  return (
+    <StyledNavigationBar>
+      <NavigationLogo>
+        <Link to="/">
+          <img src={Logo} alt="nav-logo" />
+        </Link>
+      </NavigationLogo>
+      {user && (
+        <NavigationUserInfo>
+          <CurrentUser>
+            <Link to="/">
+              <img src={UserLogo} alt="logo-img" />
+              <strong>John Doe</strong>
+            </Link>
+          </CurrentUser>
+          <ExitLink onClick={logout}> Log out </ExitLink>
+        </NavigationUserInfo>
+      )}
+    </StyledNavigationBar>
+  )
+}
+
+PageHeader.propTypes = {
+  history: shape({ push: func.isRequired }).isRequired,
+}
+
+export default withRouter(PageHeader)

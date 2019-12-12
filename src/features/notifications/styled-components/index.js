@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { List } from 'antd'
 
-export const NotificationsContainer = styled(List)`
+const NotificationsContainer = styled(List)`
   .ant-list-items {
     background: transparent;
   }
@@ -23,3 +23,5 @@ export const NotificationsContainer = styled(List)`
     align-items: center;
   }
 `
+
+export default NotificationsContainer
