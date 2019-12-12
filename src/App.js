@@ -5,8 +5,7 @@ import { Layout } from 'antd'
 import { Content } from 'common/ui-kit'
 import { Header, Footer } from 'core/components'
 import { PortalPage, LoginPage, NotFoundPage } from 'pages'
-
-import PrivateRoute from './common/components/routes/PrivateRoute'
+import PrivateRoute from 'common/components/routes/PrivateRoute'
 
 function App() {
   return (

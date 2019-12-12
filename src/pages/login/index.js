@@ -4,7 +4,7 @@ import { shape, func } from 'prop-types'
 
 import logo from 'assets/favicon.ico'
 
-import data from '../../__mocks__/mock-data'
+import users from '../../__mocks__/mock-data'
 
 import { Wrapper, CardTitle, FormButton } from './styles'
 
@@ -20,7 +20,7 @@ const LoginForm = ({ form, history }) => {
         firstName: user.firstName,
         lastName: user.lastName,
         role: user.role,
-        img: user.imgUrl,
+        img: user.img,
         project: user.project,
         position: user.position,
         token: Math.random()
@@ -35,7 +35,7 @@ const LoginForm = ({ form, history }) => {
     e.preventDefault()
     setTimeout(() => {
       const { username, password } = getFieldsValue()
-      const user = data.users.find(
+      const user = users.find(
         x => x.username === username && x.password === password,
       )
       validateFields(err => {

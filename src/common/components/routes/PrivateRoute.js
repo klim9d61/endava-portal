@@ -7,6 +7,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
     {...rest}
     render={props => {
       const user = JSON.parse(localStorage.getItem('currentUser'))
+
       if (!user) {
         return (
           <Redirect
