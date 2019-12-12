@@ -1,0 +1,50 @@
+const data = {
+  users: [
+    {
+      id: 1,
+      firstName: `first`,
+      lastName: `last`,
+      username: `user1`,
+      password: `1234`,
+      role: `user`,
+      project: `project 1`,
+      position: `junior developer`,
+      imgUrl: `https://fishandconnorsawamovie.podbean.com/mf/web/6dhnad/deadpool_square2.jpg`,
+    },
+    {
+      id: 2,
+      firstName: `first`,
+      lastName: `last`,
+      username: `user2`,
+      password: `1234`,
+      role: `user`,
+      project: `project 2`,
+      position: 'senior developer',
+      imgUrl: `https://fishandconnorsawamovie.podbean.com/mf/web/6dhnad/deadpool_square2.jpg`,
+    },
+    {
+      id: 3,
+      firstName: `first`,
+      lastName: `last`,
+      username: `user3`,
+      password: `1234`,
+      role: `user`,
+      project: `project 3`,
+      position: `senior developer`,
+      imgUrl: `https://fishandconnorsawamovie.podbean.com/mf/web/6dhnad/deadpool_square2.jpg`,
+    },
+    {
+      id: 4,
+      firstName: `first`,
+      lastName: `last`,
+      username: `admin`,
+      password: `1234`,
+      role: `admin`,
+      project: `-`,
+      position: `-`,
+      imgUrl: `https://fishandconnorsawamovie.podbean.com/mf/web/6dhnad/deadpool_square2.jpg`,
+    },
+  ],
+}
+
+export default data
