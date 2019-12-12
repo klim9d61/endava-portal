@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import Logo from '../../../assets/portal-logo.png'
+import Logo from 'assets/portal-logo.png'
+import UserLogo from 'assets/user-logo.png'
 
-import { userName, userLogo } from './utils'
 import {
   StyledNavigationBar,
   NavigationLogo,
@@ -22,8 +22,8 @@ const PageHeader = () => (
     <NavigationUserInfo>
       <CurrentUser>
         <Link to="/">
-          <img src={userLogo} alt="logo-img" />
-          <strong>{userName}</strong>
+          <img src={UserLogo} alt="logo-img" />
+          <strong>John Doe</strong>
         </Link>
       </CurrentUser>
       <ExitLink>
