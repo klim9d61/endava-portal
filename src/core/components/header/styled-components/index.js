@@ -1,6 +1,11 @@
 import styled from 'styled-components'
+import { Modal } from 'antd'
 
 import { Header } from 'common/ui-kit'
+
+export const ModalLogout = styled(Modal)`
+  top: 180px;
+`
 
 export const StyledNavigationBar = styled(Header)`
   color: #fff;

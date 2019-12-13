@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { shape, func } from 'prop-types'
 import { withRouter } from 'react-router'
@@ -12,16 +12,27 @@ import {
   CurrentUser,
   ExitLink,
   NavigationUserInfo,
+  ModalLogout,
 } from './styled-components'
 
 const PageHeader = ({ history }) => {
+  const [modalVisible, setModalVisible] = useState(false)
   const user = JSON.parse(localStorage.getItem('currentUser'))
 
-  const logout = () => {
+  const handleLogout = () => {
+    setModalVisible(false)
     setTimeout(() => {
       localStorage.removeItem('currentUser')
       history.push('/login')
     }, 700)
+  }
+
+  const handleModalVisibility = () => {
+    setModalVisible(!false)
+  }
+
+  const handleCancel = () => {
+    setModalVisible(false)
   }
 
   return (
@@ -39,7 +50,17 @@ const PageHeader = ({ history }) => {
               <strong>John Doe</strong>
             </Link>
           </CurrentUser>
-          <ExitLink onClick={logout}> Log out </ExitLink>
+          <ExitLink onClick={handleModalVisibility}> Log out </ExitLink>
+          {modalVisible && (
+            <ModalLogout
+              title="Log out"
+              visible={modalVisible}
+              onOk={handleLogout}
+              onCancel={handleCancel}
+            >
+              <p>Are you sure ?</p>
+            </ModalLogout>
+          )}
         </NavigationUserInfo>
       )}
     </StyledNavigationBar>
