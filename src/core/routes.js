@@ -27,11 +27,11 @@ const routes = [
       },
       {
         path: '/calendar',
-        component: CalendarRBC,
+        component: Calendar,
       },
       {
         path: '/materials',
-        component: RequestMaterials,
+        component: Materials,
       },
       {
         path: '/vacations',
