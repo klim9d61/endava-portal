@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { shape, func } from 'prop-types'
 import { withRouter } from 'react-router'
 
 import Logo from 'assets/portal-logo.png'
-import UserLogo from 'assets/user-logo.png'
 
 import {
   StyledNavigationBar,
@@ -12,17 +11,23 @@ import {
   CurrentUser,
   ExitLink,
   NavigationUserInfo,
+  NavigationExit,
+  ModalLogout,
 } from './styled-components'
 
 const PageHeader = ({ history }) => {
+  const [modalVisible, setModalVisible] = useState(false)
   const user = JSON.parse(localStorage.getItem('currentUser'))
 
-  const logout = () => {
+  const handleLogout = () => {
+    setModalVisible(false)
     setTimeout(() => {
       localStorage.removeItem('currentUser')
       history.push('/login')
     }, 700)
   }
+
+  const handleModalVisibility = () => setModalVisible(!modalVisible)
 
   return (
     <StyledNavigationBar>
@@ -34,12 +39,24 @@ const PageHeader = ({ history }) => {
       {user && (
         <NavigationUserInfo>
           <CurrentUser>
-            <Link to="/">
-              <img src={UserLogo} alt="logo-img" />
-              <strong>John Doe</strong>
+            <Link to="/profile">
+              <img src={user.logo} alt="logo-img" />
+              <strong>{`${user.firstName} ${user.lastName}`}</strong>
             </Link>
           </CurrentUser>
-          <ExitLink onClick={logout}> Log out </ExitLink>
+          <NavigationExit>
+            <ExitLink onClick={handleModalVisibility}> Log out </ExitLink>
+          </NavigationExit>
+          {modalVisible && (
+            <ModalLogout
+              title="Log out"
+              visible={modalVisible}
+              onOk={handleLogout}
+              onCancel={handleModalVisibility}
+            >
+              <p>Are you sure ?</p>
+            </ModalLogout>
+          )}
         </NavigationUserInfo>
       )}
     </StyledNavigationBar>

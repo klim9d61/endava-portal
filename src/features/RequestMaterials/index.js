@@ -16,29 +16,26 @@ import {
   itAccessories,
   Note,
 } from 'features/constants'
+import globalMessage from 'common/components/GlobalMessage/GlobalMessage'
 
 const { Option } = Select
 
 const RequestMaterials = ({ form }) => {
+  const { getFieldDecorator } = form
+  const { TextArea } = Input
+
   const handleSubmit = e => {
     e.preventDefault()
     form.validateFields((err, values) => {
       if (!err) {
-        localStorage.setItem('Request Materials', JSON.stringify(values))
+        localStorage.setItem('RequestEvents Materials', JSON.stringify(values))
+        globalMessage(true)
+        form.resetFields()
       }
     })
   }
-  const { getFieldDecorator } = form
-  const { TextArea } = Input
   return (
     <Form
-      style={{
-        position: 'absolute',
-        top: '50%',
-        left: '55%',
-        transform: 'translate(-50%, -50%)',
-        width: '50%',
-      }}
       labelCol={{ span: 5 }}
       wrapperCol={{ span: 12 }}
       onSubmit={handleSubmit}

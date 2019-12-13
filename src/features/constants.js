@@ -1,4 +1,4 @@
-// Request Materials
+// RequestEvents Materials
 export const fullNameInfo = 'Insert your full name!'
 export const FullName = 'Full Name'
 export const noteInfo = 'You can input additional note!'

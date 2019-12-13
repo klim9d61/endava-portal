@@ -1,14 +1,41 @@
-import React from 'react'
-import { Menu } from 'antd'
+import React, { useState, useEffect } from 'react'
+import { SidebarMenu, MenuWrapper } from './styled-components'
 
 import { MenuCreator } from 'common/utils'
 
 import menuListItems from '../../menuList'
 
-const MenuList = () => (
-  <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" title="privet">
-    {MenuCreator(menuListItems)}
-  </Menu>
-)
+const MenuList = () => {
+  const [isSticky, setSticky] = useState(false)
+
+  const handleScroll = () => {
+    if (window.scrollY > 65) {
+      setSticky(true)
+    } else {
+      setSticky(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  return (
+    <MenuWrapper>
+      <SidebarMenu
+        theme="dark"
+        defaultSelectedKeys={['1']}
+        mode="inline"
+        sticky={isSticky ? 'true' : 'false'}
+      >
+        {MenuCreator(menuListItems)}
+      </SidebarMenu>
+    </MenuWrapper>
+  )
+}
 
 export default MenuList

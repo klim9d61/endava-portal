@@ -1,21 +1,20 @@
 import React from 'react'
-
+import { Row, Col } from 'antd'
 import NotificationsContainer from './styled-components'
 import NotificationItem from './NotificationItem'
-import listData from './constants'
-
-const styles = {
-  width: '90%',
-}
+import { notificationsData } from '__mocks__/mock-data'
 
 const Notifications = () => (
-  <NotificationsContainer
-    style={styles}
-    itemLayout="vertical"
-    size="large"
-    dataSource={listData}
-    renderItem={item => <NotificationItem item={item} />}
-  />
+  <Row type="flex" justify="center" align="middle">
+    <Col span={20}>
+      <NotificationsContainer
+        itemLayout="vertical"
+        size="large"
+        dataSource={notificationsData}
+        renderItem={item => <NotificationItem item={item} />}
+      />
+    </Col>
+  </Row>
 )
 
 export default Notifications
