@@ -1,6 +1,11 @@
 import styled from 'styled-components'
+import { Modal } from 'antd'
 
 import { Header } from 'common/ui-kit'
+
+export const ModalLogout = styled(Modal)`
+  top: 180px;
+`
 
 export const StyledNavigationBar = styled(Header)`
   color: #fff;
@@ -54,16 +59,14 @@ export const CurrentUser = styled.div`
     border-color: #de411b;
   }
 `
+export const NavigationExit = styled.div``
 
 export const ExitLink = styled.a`
-  a {
-    padding-bottom: 5px;
-    border-bottom: 3px solid transparent;
-    transition: 0.3s ease-in-out;
-
-    &:hover {
-      border-color: #de411b;
-    }
+  padding-bottom: 5px;
+  border-bottom: 3px solid transparent;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    border-color: #de411b;
   }
   margin-left: 40px;
 `
