@@ -18,7 +18,7 @@ const config = {
   ],
   localizer,
   resizable: true,
-  style: { padding: 15, width: '90%', margin: '0 auto', height: '85vh' },
+  style: { padding: '2rem', width: '90%', margin: '0 auto', height: '85vh' },
 }
 
 export default config

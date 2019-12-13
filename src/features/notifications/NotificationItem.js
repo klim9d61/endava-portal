@@ -8,7 +8,7 @@ export const NotificationItem = ({ item }) => (
       <img
         width={150}
         alt="logo"
-        src="http://www.realwire.com/writeitfiles/endava.jpg"
+        src="https://www.endava.com/-/media/EndavaDigital/Endava/Images/MetaDataImages/preview-image.ashx"
       />
     }
   >
