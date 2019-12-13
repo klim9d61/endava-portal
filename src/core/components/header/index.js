@@ -28,13 +28,7 @@ const PageHeader = ({ history }) => {
     }, 700)
   }
 
-  const handleModalVisibility = () => {
-    setModalVisible(!modalVisible)
-  }
-
-  const handleCancel = () => {
-    setModalVisible(false)
-  }
+  const handleModalVisibility = () => setModalVisible(!modalVisible)
 
   return (
     <StyledNavigationBar>
@@ -59,7 +53,7 @@ const PageHeader = ({ history }) => {
               title="Log out"
               visible={modalVisible}
               onOk={handleLogout}
-              onCancel={handleCancel}
+              onCancel={handleModalVisibility}
             >
               <p>Are you sure ?</p>
             </ModalLogout>
