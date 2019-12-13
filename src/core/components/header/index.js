@@ -12,6 +12,7 @@ import {
   CurrentUser,
   ExitLink,
   NavigationUserInfo,
+  NavigationExit,
   ModalLogout,
 } from './styled-components'
 
@@ -50,7 +51,9 @@ const PageHeader = ({ history }) => {
               <strong>John Doe</strong>
             </Link>
           </CurrentUser>
-          <ExitLink onClick={handleModalVisibility}> Log out </ExitLink>
+          <NavigationExit>
+            <ExitLink onClick={handleModalVisibility}> Log out </ExitLink>
+          </NavigationExit>
           {modalVisible && (
             <ModalLogout
               title="Log out"
