@@ -7,14 +7,16 @@ const NotificationsContainer = styled(List)`
   }
 
   .ant-list-item {
+    width: 100%;
     background-color: #fff;
     margin: 1rem 0;
-    padding: 0.5rem;
+    padding: 1rem;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
 
     &:hover {
       background-color: #fcfafa;
+      transform: scale(1.01);
     }
   }
 
