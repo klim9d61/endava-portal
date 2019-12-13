@@ -1,7 +1,7 @@
 import React from 'react'
 
-const Request = () => {
+const RequestEvents = () => {
   return <div>Some forms</div>
 }
 
-export default Request
+export default RequestEvents
