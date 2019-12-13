@@ -8,6 +8,10 @@ import {
   RequestMaterials,
   News,
   Notifications,
+  Profile,
+  Admin,
+  Users,
+  Events,
 } from 'features'
 import { Content } from 'common/ui-kit'
 
@@ -18,14 +22,16 @@ function PortalPage() {
     <Layout style={{ minHeight: '100vh' }}>
       <Sidebar />
       <Layout>
-        <Content
-          style={{ margin: '0', display: 'flex', justifyContent: 'center' }}
-        >
+        <Content>
           <Switch>
+            <Route exact path="/admin" component={Admin} />
+            <Route exact path="/admin/users" component={Users} />
+            <Route exact path="/admin/events" component={Events} />
             <Route exact path="/calendar" component={CalendarRBC} />
             <Route exact path="/vacations" component={Vacations} />
             <Route exact path="/materials" component={RequestMaterials} />
             <Route exact path="/notifications" component={Notifications} />
+            <Route exact path="/profile" component={Profile} />
             <Route exact path="/" component={News} />
             <Route default>
               <Redirect to="/404" />
