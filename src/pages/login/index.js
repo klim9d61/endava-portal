@@ -1,14 +1,14 @@
-import React from 'react'
-import { Form, Icon, Input, Card } from 'antd'
+import React, { useState } from 'react'
+import { Form, Icon, Input, Card, Alert } from 'antd'
 import { shape, func } from 'prop-types'
 
 import logo from 'assets/favicon.ico'
-
-import users from '../../__mocks__/mock-data'
+import users from '__mocks__/mock-data'
 
 import { Wrapper, CardTitle, FormButton } from './styles'
 
 const LoginForm = ({ form, history }) => {
+  const [loginError, setLoginError] = useState(false)
   const { getFieldDecorator, getFieldsValue, validateFields } = form
 
   const addToLocalStorage = user => {
@@ -20,9 +20,10 @@ const LoginForm = ({ form, history }) => {
         firstName: user.firstName,
         lastName: user.lastName,
         role: user.role,
-        img: user.img,
+        logo: user.logo,
         project: user.project,
         position: user.position,
+        birthday: user.birthday,
         token: Math.random()
           .toString(35)
           .substr(2),
@@ -39,9 +40,8 @@ const LoginForm = ({ form, history }) => {
         x => x.username === username && x.password === password,
       )
       validateFields(err => {
-        if (!err && user) {
-          addToLocalStorage(user)
-        }
+        if (!err && user) addToLocalStorage(user)
+        else setLoginError(!loginError)
       })
     }, 700)
   }
@@ -67,6 +67,15 @@ const LoginForm = ({ form, history }) => {
           <img src={logo} style={{ height: '70%', width: '20%' }} alt="logo" />
         </CardTitle>
         <Form onSubmit={handleSubmit} className="login-form">
+          {loginError ? (
+            <Alert
+              message="Invalid credentials"
+              description="Your email or password is wrong"
+              type="error"
+            />
+          ) : (
+            ''
+          )}
           <Form.Item>
             {getFieldDecorator('username', {
               rules: [

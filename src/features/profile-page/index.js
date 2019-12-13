@@ -11,20 +11,13 @@ import {
 
 const Profile = () => {
   const [img, setImg] = useState('')
-
-  const state = {
-    img,
-    firstName: 'Raq',
-    lastName: 'Qar',
-    birthday: '12 01 1990',
-    role: 'User',
-    position: 'Senior developer',
-  }
+  const user = JSON.parse(localStorage.getItem('currentUser'))
 
   const loadImage = event => {
     const img = URL.createObjectURL(event.target.files[0])
     setImg(img)
   }
+
   return (
     <StyledProfileContainer>
       <StyledProfileAvatarContainer>
@@ -35,7 +28,7 @@ const Profile = () => {
           }}
           size={164}
           icon="user"
-          src={img}
+          src={img || user.logo}
         />
         <input
           onChange={loadImage}
@@ -58,19 +51,19 @@ const Profile = () => {
       <StyledProfileContent>
         <StyledProfileSpan>
           <b>Name: </b>
-          {`${state.firstName} ${state.lastName}`}
+          {`${user.firstName} ${user.lastName}`}
         </StyledProfileSpan>
         <StyledProfileSpan>
           <b>Role: </b>
-          {state.role}
+          {user.role}
         </StyledProfileSpan>
         <StyledProfileSpan>
           <b>Position: </b>
-          {state.position}
+          {user.position}
         </StyledProfileSpan>
         <StyledProfileSpan>
           <b>Birthday: </b>
-          {state.birthday}
+          {user.birthday}
         </StyledProfileSpan>
       </StyledProfileContent>
     </StyledProfileContainer>

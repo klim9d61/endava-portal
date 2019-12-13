@@ -4,7 +4,6 @@ import { shape, func } from 'prop-types'
 import { withRouter } from 'react-router'
 
 import Logo from 'assets/portal-logo.png'
-import UserLogo from 'assets/user-logo.png'
 
 import {
   StyledNavigationBar,
@@ -34,9 +33,9 @@ const PageHeader = ({ history }) => {
       {user && (
         <NavigationUserInfo>
           <CurrentUser>
-            <Link to="/">
-              <img src={UserLogo} alt="logo-img" />
-              <strong>John Doe</strong>
+            <Link to="/profile">
+              <img src={user.logo} alt="logo-img" />
+              <strong>{`${user.firstName} ${user.lastName}`}</strong>
             </Link>
           </CurrentUser>
           <ExitLink onClick={logout}> Log out </ExitLink>
