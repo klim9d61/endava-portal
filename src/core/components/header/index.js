@@ -29,7 +29,7 @@ const PageHeader = ({ history }) => {
   }
 
   const handleModalVisibility = () => {
-    setModalVisible(!false)
+    setModalVisible(!modalVisible)
   }
 
   const handleCancel = () => {
