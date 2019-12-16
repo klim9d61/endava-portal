@@ -41,7 +41,7 @@ const LoginForm = ({ form, history }) => {
       )
       validateFields(err => {
         if (!err && user) addToLocalStorage(user)
-        else setLoginError(!loginError)
+        else setLoginError(true)
       })
     }, 700)
   }
@@ -68,18 +68,15 @@ const LoginForm = ({ form, history }) => {
         </CardTitle>
         <Form onSubmit={handleSubmit} className="login-form">
           {loginError ? (
-            <Alert
-              message="Invalid credentials"
-              description="Your email or password is wrong"
-              type="error"
-            />
-          ) : (
-            ''
-          )}
+            <Alert message="Invalid credentials" type="error" showIcon />
+          ) : null}
           <Form.Item>
             {getFieldDecorator('username', {
               rules: [
-                { required: true, message: 'please input your username' },
+                {
+                  required: true,
+                  message: 'please input your username',
+                },
               ],
             })(
               <Input
@@ -93,7 +90,10 @@ const LoginForm = ({ form, history }) => {
           <Form.Item>
             {getFieldDecorator('password', {
               rules: [
-                { required: true, message: 'please input your password' },
+                {
+                  required: true,
+                  message: 'please input your password',
+                },
               ],
             })(
               <Input
