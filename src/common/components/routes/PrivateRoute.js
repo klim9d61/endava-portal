@@ -27,7 +27,13 @@ PrivateRoute.propTypes = {
   component: func.isRequired,
   location: shape({
     pathname: string.isRequired,
-  }).isRequired,
+  }),
+}
+
+PrivateRoute.defaultProps = {
+  location: {
+    pathname: '',
+  },
 }
 
 export default PrivateRoute
