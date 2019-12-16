@@ -1,33 +1,65 @@
-import React from 'react'
-import { Calendar } from 'react-big-calendar'
+import React, { useState } from 'react'
 
 import config from './calendarConfig'
+import {
+  CalendarEventsContainer,
+  CurrentEventsNumber,
+  StyledCalendar,
+} from './styled-components'
 
-import 'react-big-calendar/lib/css/react-big-calendar.css'
+const {
+  defaultDate,
+  drilldownView,
+  defaultView,
+  localizer,
+  selectable,
+  resizable,
+} = config
 
 const CalendarRBC = () => {
-  const {
-    defaultDate,
-    drilldownView,
-    defaultView,
-    events,
-    localizer,
-    resizable,
-    style,
-  } = config
+  const [calendarEvents, setCalendarEvents] = useState([
+    {
+      start: new Date('2019, 12, 31'),
+      end: new Date('2020, 01, 01'),
+      title: 'Happy New Year',
+      allDay: true,
+    },
+  ])
+
+  const handleSelect = ({ start, end }) => {
+    if (start.getDate() >= defaultDate.getDate()) {
+      // eslint-disable-next-line no-alert
+      const title = prompt('New Event name')
+      if (title) {
+        setCalendarEvents([...calendarEvents, { start, end, title }])
+      }
+    }
+  }
+
+  const handleEvent = ({ title }) => {
+    setCalendarEvents(
+      calendarEvents.filter(eventTarget => eventTarget.title !== title),
+    )
+  }
 
   return (
-    <div className="calendar-rbc-container" style={{ width: '100%' }}>
-      <Calendar
+    <CalendarEventsContainer>
+      <CurrentEventsNumber>
+        Number of events:
+        {calendarEvents.length}
+      </CurrentEventsNumber>
+      <StyledCalendar
         defaultDate={defaultDate}
         drilldownView={drilldownView}
         defaultView={defaultView}
-        events={events}
+        events={calendarEvents}
+        selectable={selectable}
         localizer={localizer}
         resizable={resizable}
-        style={style}
+        onSelectSlot={handleSelect}
+        onDoubleClickEvent={handleEvent}
       />
-    </div>
+    </CalendarEventsContainer>
   )
 }
 
