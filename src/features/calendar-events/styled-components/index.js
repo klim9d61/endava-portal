@@ -4,7 +4,10 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 export const CalendarEventsContainer = styled.div`
   .rbc-calendar {
-    height: 85vh;
+    height: 83vh;
+  }
+  .rbc-today {
+    background-color: #cce5f7;
   }
 `
 
