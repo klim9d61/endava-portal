@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import URL from './constants'
+import { URL, uniqueId } from './constants'
 
 const useInfiniteScroll = pageNumber => {
   const [isLoading, setLoading] = useState(false)
@@ -17,6 +17,24 @@ const useInfiniteScroll = pageNumber => {
         })
         setHasMore(news.articles.length > 0)
         setLoading(false)
+
+        const notifications = news.articles.reduce(
+          (acc, { title, content, description, urlToImage }, i) => {
+            return [
+              ...acc,
+              {
+                id: uniqueId(),
+                title,
+                href: urlToImage,
+                avatar: 'https://i.pravatar.cc/300',
+                description,
+                content,
+              },
+            ]
+          },
+          [],
+        )
+        localStorage.setItem('notifications', JSON.stringify(notifications))
       })
       .catch(err => Error(err))
   }, [pageNumber])

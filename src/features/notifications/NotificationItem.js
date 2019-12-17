@@ -5,13 +5,7 @@ import { shape, string } from 'prop-types'
 const NotificationItem = ({ item }) => (
   <List.Item
     key={item.title}
-    extra={
-      <img
-        width={150}
-        alt="logo"
-        src="https://www.endava.com/-/media/EndavaDigital/Endava/Images/MetaDataImages/preview-image.ashx"
-      />
-    }
+    extra={<img width={150} alt="logo" src={item.href} />}
   >
     <List.Item.Meta
       avatar={<Avatar src={item.avatar} />}
