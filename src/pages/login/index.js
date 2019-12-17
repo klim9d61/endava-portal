@@ -9,7 +9,12 @@ import { Wrapper, CardTitle, FormButton } from './styles'
 
 const LoginForm = ({ form, history }) => {
   const [loginError, setLoginError] = useState(false)
-  const { getFieldDecorator, getFieldsValue, validateFields } = form
+  const {
+    getFieldDecorator,
+    getFieldsValue,
+    validateFields,
+    isFieldsTouched,
+  } = form
 
   const addToLocalStorage = user => {
     localStorage.setItem(
@@ -41,8 +46,8 @@ const LoginForm = ({ form, history }) => {
       )
       validateFields(err => {
         if (!err && user) addToLocalStorage(user)
-        else setLoginError(true)
       })
+      if (isFieldsTouched(['username', 'password'])) setLoginError(true)
     }, 700)
   }
 
@@ -120,6 +125,8 @@ const LoginForm = ({ form, history }) => {
 LoginForm.propTypes = {
   form: shape({
     getFieldDecorator: func.isRequired,
+    isFieldsTouched: func.isRequired,
+    validateFields: func.isRequired,
   }).isRequired,
   history: shape({
     push: func.isRequired,
