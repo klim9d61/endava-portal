@@ -11,6 +11,14 @@ const config = {
   localizer,
   selectable: true,
   resizable: true,
+  tempEvents: [
+    {
+      start: new Date('2019, 12, 31'),
+      end: new Date('2020, 01, 01'),
+      title: 'Happy New Year',
+      allDay: true,
+    },
+  ],
 }
 
 export default config

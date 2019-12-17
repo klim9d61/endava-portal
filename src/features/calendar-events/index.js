@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import config from './calendarConfig'
 import {
@@ -14,17 +14,20 @@ const {
   localizer,
   selectable,
   resizable,
+  tempEvents,
 } = config
 
 const CalendarRBC = () => {
-  const [calendarEvents, setCalendarEvents] = useState([
-    {
-      start: new Date('2019, 12, 31'),
-      end: new Date('2020, 01, 01'),
-      title: 'Happy New Year',
-      allDay: true,
-    },
-  ])
+  const [calendarEvents, setCalendarEvents] = useState(
+    JSON.parse(localStorage.getItem('CalendarStorageEvents')) || tempEvents,
+  )
+
+  useEffect(() => {
+    localStorage.setItem(
+      'CalendarStorageEvents',
+      JSON.stringify(calendarEvents),
+    )
+  }, [calendarEvents])
 
   const handleSelect = ({ start, end }) => {
     if (start.getDate() >= defaultDate.getDate()) {
