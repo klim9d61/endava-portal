@@ -1,27 +1,22 @@
-// RequestEvents Materials
+// Request
 export const fullNameInfo = 'Insert your full name!'
-export const FullName = 'Full Name'
+export const fullName = 'Full Name'
 export const noteInfo = 'You can input additional note!'
-export const Note = 'Note'
+export const note = 'Note'
 export const selectInfo = 'Please select the required item(s)'
 export const itAccessories = 'it-accessories'
 export const lvlUrgency = 'Lvl urgency'
 export const lvlInfo = 'Please select the lvl urgency'
 export const submitBtn = 'Send request'
-
-export const selectMaterials = [
-  'Backpack',
-  'Network cable',
-  'Laptop Charger',
-  'Extension card',
-  'Headset',
-  'Mouse',
-  'Keyboard',
-  'Laptop riser/cooler',
-  'UK/EU outlet adaptor',
-  'Video adaptor',
-]
-
-export const selectLvl = ['Low', 'Medium', 'High']
+export const requestMaterials = 'Request Materials'
+export const requestVacation = 'Request Vacation'
+export const selectPeriod = 'Select Period'
+export const selectTime = 'Please select time!'
+export const typeInput = 'Input'
+export const typeTextarea = 'Textarea'
+export const typeSelect = 'Select'
+export const typeMultipleSelect = 'Multiple'
+export const typeButton = 'Button'
+export const rangePickerSelect = 'RangePickerSelect'
 
 export default null

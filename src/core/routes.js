@@ -1,12 +1,5 @@
 import { LoginPage, PortalPage, NotFoundPage } from 'pages'
-import {
-  CalendarRBC,
-  Vacations,
-  RequestMaterials,
-  News,
-  Profile,
-  Notifications,
-} from 'features'
+import { Calendar, RequestForm, News, Profile, Notifications } from 'features'
 
 const routes = [
   {
@@ -30,12 +23,8 @@ const routes = [
         component: Calendar,
       },
       {
-        path: '/materials',
-        component: Materials,
-      },
-      {
-        path: '/vacations',
-        component: Vacations,
+        path: '/request',
+        component: RequestForm,
       },
       {
         path: '/notifications',
