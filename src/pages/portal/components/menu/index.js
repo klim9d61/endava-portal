@@ -5,8 +5,6 @@ import menuListItems from 'pages/portal/menuList'
 
 import { SidebarMenu, MenuWrapper } from './styled-components'
 
-import { SidebarMenu, MenuWrapper } from './styled-components'
-
 const MenuList = () => {
   const [isSticky, setSticky] = useState(false)
 

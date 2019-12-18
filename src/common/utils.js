@@ -1,14 +1,15 @@
 import React from 'react'
 import * as shortId from 'short-id'
 import {
-    Icon,
-    Menu,
-    Button,
-    Form,
-    Input,
-    Tooltip,
-    Select,
-    DatePicker, } from 'antd'
+  Icon,
+  Menu,
+  Button,
+  Form,
+  Input,
+  Tooltip,
+  Select,
+  DatePicker,
+} from 'antd'
 import { NavLink } from 'react-router-dom'
 
 import {
