@@ -50,7 +50,7 @@ export const MenuCreator = menuListItems =>
   )
 
 // Request form add to localStorage
-export const setEventRequest = (values, request) => {
+export const setDataLocalStorage = (values, request) => {
   const existingRequest = JSON.parse(localStorage.getItem(request)) || []
   existingRequest.push(values)
   localStorage.setItem(request, JSON.stringify(existingRequest))

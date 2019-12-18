@@ -2,7 +2,7 @@ import React from 'react'
 import { Form } from 'antd'
 import { shape, func, string, arrayOf, object } from 'prop-types'
 
-import { requestForm, setEventRequest } from 'common/utils'
+import { requestForm, setDataLocalStorage } from 'common/utils'
 import globalMessage from 'common/components/GlobalMessage/GlobalMessage'
 
 const RequestTemplates = ({ form, eventRequestList, eventRequestType }) => {
@@ -12,7 +12,7 @@ const RequestTemplates = ({ form, eventRequestList, eventRequestType }) => {
     e.preventDefault()
     form.validateFields((err, values) => {
       if (!err) {
-        setEventRequest(values, eventRequestType)
+        setDataLocalStorage(values, eventRequestType)
         globalMessage(true)
         form.resetFields()
       }

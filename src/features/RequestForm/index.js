@@ -3,7 +3,7 @@ import { Row, Tabs } from 'antd'
 
 import RequestMaterials from 'features/RequestForm/RequestMaterials'
 import RequestVacation from 'features/RequestForm/RequestVacation'
-import { requestMaterials, requestVacation } from 'features/constants'
+import { requestMaterialsTitle, requestVacationTitle } from 'features/constants'
 
 const { TabPane } = Tabs
 const RequestForm = () => (
@@ -16,10 +16,10 @@ const RequestForm = () => (
       defaultActiveKey="1"
       size="large"
     >
-      <TabPane tab={requestMaterials} key="1">
+      <TabPane tab={requestMaterialsTitle} key="1">
         <RequestMaterials />
       </TabPane>
-      <TabPane tab={requestVacation} key="2">
+      <TabPane tab={requestVacationTitle} key="2">
         <RequestVacation />
       </TabPane>
     </Tabs>
