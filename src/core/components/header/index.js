@@ -54,7 +54,7 @@ const PageHeader = ({ history }) => {
               onOk={handleLogout}
               onCancel={handleModalVisibility}
             >
-              <p>Are you sure ?</p>
+              <p>Are you sure?</p>
             </ModalLogout>
           )}
         </NavigationUserInfo>

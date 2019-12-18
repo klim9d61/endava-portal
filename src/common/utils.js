@@ -1,16 +1,15 @@
 import React from 'react'
 import * as shortId from 'short-id'
 import {
-  Button,
-  Form,
-  Icon,
-  Input,
-  Menu,
-  Tooltip,
-  Select,
-  DatePicker,
-} from 'antd'
-import { Link } from 'react-router-dom'
+    Icon,
+    Menu,
+    Button,
+    Form,
+    Input,
+    Tooltip,
+    Select,
+    DatePicker, } from 'antd'
+import { NavLink } from 'react-router-dom'
 
 import {
   rangePickerSelect,
@@ -31,20 +30,34 @@ export const MenuCreator = menuListItems =>
       <SubMenu
         key={shortId.generate()}
         title={
-          <Link to={path}>
+          <NavLink
+            exact
+            to={path}
+            activeStyle={{
+              fontWeight: 'bold',
+              color: 'red',
+            }}
+          >
             <Icon type={icon} />
             <span>{name}</span>
-          </Link>
+          </NavLink>
         }
       >
         {MenuCreator(submenu)}
       </SubMenu>
     ) : (
       <Item key={shortId.generate()}>
-        <Link to={path}>
+        <NavLink
+          exact
+          to={path}
+          activeStyle={{
+            fontWeight: 'bold',
+            color: 'red',
+          }}
+        >
           <Icon type={icon} />
           <span>{name}</span>
-        </Link>
+        </NavLink>
       </Item>
     ),
   )
