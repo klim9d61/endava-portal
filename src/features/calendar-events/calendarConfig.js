@@ -5,6 +5,7 @@ const localizer = momentLocalizer(moment)
 const defaultDate = new Date()
 
 const config = {
+  spinSize: 'large',
   defaultDate,
   drilldownView: 'agenda',
   defaultView: 'month',

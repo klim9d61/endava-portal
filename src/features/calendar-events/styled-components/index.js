@@ -9,6 +9,16 @@ export const CalendarEventsContainer = styled.div`
   .rbc-today {
     background-color: #cce5f7;
   }
+  .ant-spin-nested-loading > div > .ant-spin {
+    transform: translateY(20%);
+  }
+  .ant-spin-blur::after {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .ant-spin-dot-item {
+    background: red;
+  }
 `
 
 export const CurrentEventsNumber = styled.div`

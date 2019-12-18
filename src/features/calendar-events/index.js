@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Spin } from 'antd'
 
 import config from './calendarConfig'
 import {
@@ -8,6 +9,7 @@ import {
 } from './styled-components'
 
 const {
+  spinSize,
   defaultDate,
   drilldownView,
   defaultView,
@@ -18,6 +20,7 @@ const {
 } = config
 
 const CalendarRBC = () => {
+  const [isLoading, setIsLoading] = useState(true)
   const [calendarEvents, setCalendarEvents] = useState(
     JSON.parse(localStorage.getItem('CalendarStorageEvents')) || tempEvents,
   )
@@ -28,6 +31,10 @@ const CalendarRBC = () => {
       JSON.stringify(calendarEvents),
     )
   }, [calendarEvents])
+
+  setTimeout(() => {
+    setIsLoading(false)
+  }, 750)
 
   const handleSelect = ({ start, end }) => {
     if (start.getDate() >= defaultDate.getDate()) {
@@ -47,21 +54,23 @@ const CalendarRBC = () => {
 
   return (
     <CalendarEventsContainer>
-      <CurrentEventsNumber>
-        Number of events:
-        {calendarEvents.length}
-      </CurrentEventsNumber>
-      <StyledCalendar
-        defaultDate={defaultDate}
-        drilldownView={drilldownView}
-        defaultView={defaultView}
-        events={calendarEvents}
-        selectable={selectable}
-        localizer={localizer}
-        resizable={resizable}
-        onSelectSlot={handleSelect}
-        onDoubleClickEvent={handleEvent}
-      />
+      <Spin spinning={isLoading} size={spinSize}>
+        <CurrentEventsNumber>
+          Number of events:
+          {calendarEvents.length}
+        </CurrentEventsNumber>
+        <StyledCalendar
+          defaultDate={defaultDate}
+          drilldownView={drilldownView}
+          defaultView={defaultView}
+          events={calendarEvents}
+          selectable={selectable}
+          localizer={localizer}
+          resizable={resizable}
+          onSelectSlot={handleSelect}
+          onDoubleClickEvent={handleEvent}
+        />
+      </Spin>
     </CalendarEventsContainer>
   )
 }
