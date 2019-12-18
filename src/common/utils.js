@@ -1,7 +1,7 @@
 import React from 'react'
 import * as shortId from 'short-id'
 import { Icon, Menu } from 'antd'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const { Item, SubMenu } = Menu
 
@@ -12,20 +12,34 @@ export const MenuCreator = menuListItems =>
       <SubMenu
         key={shortId.generate()}
         title={
-          <Link to={path}>
+          <NavLink
+            exact
+            to={path}
+            activeStyle={{
+              fontWeight: 'bold',
+              color: 'red',
+            }}
+          >
             <Icon type={icon} />
             <span>{name}</span>
-          </Link>
+          </NavLink>
         }
       >
         {MenuCreator(submenu)}
       </SubMenu>
     ) : (
       <Item key={shortId.generate()}>
-        <Link to={path}>
+        <NavLink
+          exact
+          to={path}
+          activeStyle={{
+            fontWeight: 'bold',
+            color: 'red',
+          }}
+        >
           <Icon type={icon} />
           <span>{name}</span>
-        </Link>
+        </NavLink>
       </Item>
     ),
   )
