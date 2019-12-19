@@ -19,6 +19,10 @@ export const CalendarEventsContainer = styled.div`
   .ant-spin-dot-item {
     background: red;
   }
+
+  .rbc-day-bg {
+    cursor: pointer;
+  }
 `
 
 export const CurrentEventsNumber = styled.div`

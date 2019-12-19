@@ -16,6 +16,7 @@ import {
 import { Content } from 'common/ui-kit'
 
 import Sidebar from './components/sidebar'
+import NotAuthorized from '../notAuthorized'
 
 function PortalPage() {
   return (
@@ -42,6 +43,7 @@ function PortalPage() {
             <Route exact path="/notifications" component={Notifications} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/" component={News} />
+            <Route exact path="/403" component={NotAuthorized} />
             <Route default>
               <Redirect to="/404" />
             </Route>
