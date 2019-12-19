@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { shape, func, Requireable as string } from 'prop-types'
+import { shape, func, string } from 'prop-types'
 import { withRouter } from 'react-router'
 
 import Logo from 'assets/portal-logo.png'
@@ -18,7 +18,7 @@ import {
 const PageHeader = props => {
   const [modalVisible, setModalVisible] = useState(false)
 
-  const { history, user, logo } = props
+  const { history, user, flag } = props
 
   const handleLogout = () => {
     setModalVisible(false)
@@ -43,7 +43,10 @@ const PageHeader = props => {
         <NavigationUserInfo>
           <CurrentUser>
             <Link to={link}>
-              <img src={logo} alt="logo-img" />
+              <img
+                src={flag ? user.logo : `${user.logo}?img=${user.id}`}
+                alt="logo-img"
+              />
               <strong>{`${user.firstName} ${user.lastName}`}</strong>
             </Link>
           </CurrentUser>
@@ -72,7 +75,7 @@ const PageHeader = props => {
 
 PageHeader.propTypes = {
   history: shape({ push: func.isRequired }).isRequired,
-  user: func.isRequired,
+  user: func,
   logo: string,
 }
 

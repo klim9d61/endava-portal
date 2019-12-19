@@ -25,6 +25,7 @@ import RequestTemplates from 'features/RequestForm/RequestTemplates'
 
 const { Item, SubMenu } = Menu
 
+const currentUser = JSON.parse(localStorage.getItem('currentUser'))
 // Menu Creator
 export const MenuCreator = menuListItems =>
   menuListItems.map(({ submenu, path, name, icon }) =>
@@ -34,7 +35,7 @@ export const MenuCreator = menuListItems =>
         title={
           <NavLink
             exact
-            to={path}
+            to={name === 'Profile' ? `/profile/${currentUser.id}` : path}
             activeStyle={{
               fontWeight: 'bold',
               color: 'red',
