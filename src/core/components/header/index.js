@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { shape, func } from 'prop-types'
+import { shape, func, Requireable as string } from 'prop-types'
 import { withRouter } from 'react-router'
 
 import Logo from 'assets/portal-logo.png'
@@ -72,7 +72,7 @@ const PageHeader = props => {
 PageHeader.propTypes = {
   history: shape({ push: func.isRequired }).isRequired,
   user: func.isRequired,
-  logo: String.isRequired,
+  logo: string.isRequired,
 }
 
 export default withRouter(PageHeader)
