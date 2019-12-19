@@ -18,7 +18,7 @@ import { Content } from 'common/ui-kit'
 import Sidebar from './components/sidebar'
 import NotAuthorized from '../notAuthorized'
 
-function PortalPage() {
+const PortalPage = () => {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sidebar />
@@ -41,7 +41,7 @@ function PortalPage() {
             <Route exact path="/calendar" component={Calendar} />
             <Route exact path="/request" component={RequestForm} />
             <Route exact path="/notifications" component={Notifications} />
-            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/profile/:id" component={Profile} />
             <Route exact path="/" component={News} />
             <Route exact path="/403" component={NotAuthorized} />
             <Route default>
