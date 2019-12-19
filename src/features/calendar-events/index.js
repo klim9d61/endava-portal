@@ -54,8 +54,9 @@ const CalendarRBC = () => {
   const handleOk = () => {
     setModalVisibility(false)
     if (inputValue) {
-      setCurrentEvent(Object.assign(currentEvent, { title: inputValue }))
-      setCalendarEvents([...calendarEvents, currentEvent])
+      const event = { ...currentEvent, title: inputValue }
+      setCurrentEvent(event)
+      setCalendarEvents([...calendarEvents, event])
     }
     setCurrentEvent({})
     setInputValue('')
