@@ -17,7 +17,7 @@ import { Content } from 'common/ui-kit'
 
 import Sidebar from './components/sidebar'
 
-function PortalPage() {
+const PortalPage = () => {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sidebar />
@@ -31,7 +31,7 @@ function PortalPage() {
             <Route exact path="/vacations" component={Vacations} />
             <Route exact path="/materials" component={RequestMaterials} />
             <Route exact path="/notifications" component={Notifications} />
-            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/profile/:id" component={Profile} />
             <Route exact path="/" component={News} />
             <Route default>
               <Redirect to="/404" />

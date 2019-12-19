@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import { string, node, shape } from 'prop-types'
+import { string, node, shape, func } from 'prop-types'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -22,6 +22,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 )
 
 PrivateRoute.propTypes = {
+  user: Object.isRequired,
+  setUser: func.isRequired,
   component: node.isRequired,
   location: shape({
     pathname: string.isRequired,

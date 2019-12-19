@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { SidebarMenu, MenuWrapper } from './styled-components'
 
 import { MenuCreator } from 'common/utils'
 
 import menuListItems from '../../menuList'
+
+import { SidebarMenu, MenuWrapper } from './styled-components'
 
 const MenuList = () => {
   const [isSticky, setSticky] = useState(false)

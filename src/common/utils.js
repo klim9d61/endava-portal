@@ -7,10 +7,10 @@ const { Item, SubMenu } = Menu
 
 // eslint-disable-next-line import/prefer-default-export
 export const MenuCreator = menuListItems =>
-  menuListItems.map(({ submenu, path, name, icon }) =>
+  menuListItems.map(({ submenu, path, name, icon }, index) =>
     submenu.length ? (
       <SubMenu
-        key={shortId.generate()}
+        key={index}
         title={
           <Link to={path}>
             <Icon type={icon} />
@@ -21,7 +21,7 @@ export const MenuCreator = menuListItems =>
         {MenuCreator(submenu)}
       </SubMenu>
     ) : (
-      <Item key={shortId.generate()}>
+      <Item key={index}>
         <Link to={path}>
           <Icon type={icon} />
           <span>{name}</span>

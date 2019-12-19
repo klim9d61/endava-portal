@@ -15,9 +15,10 @@ import {
   ModalLogout,
 } from './styled-components'
 
-const PageHeader = ({ history }) => {
+const PageHeader = props => {
   const [modalVisible, setModalVisible] = useState(false)
-  const user = JSON.parse(localStorage.getItem('currentUser'))
+
+  const { history, user, logo } = props
 
   const handleLogout = () => {
     setModalVisible(false)
@@ -28,6 +29,7 @@ const PageHeader = ({ history }) => {
   }
 
   const handleModalVisibility = () => setModalVisible(!modalVisible)
+  const link = `/profile/${user.id}`
 
   return (
     <StyledNavigationBar>
@@ -39,13 +41,17 @@ const PageHeader = ({ history }) => {
       {user && (
         <NavigationUserInfo>
           <CurrentUser>
-            <Link to="/profile">
-              <img src={user.logo} alt="logo-img" />
+            <Link to={link}>
+              <img src={logo} alt="logo-img" />
               <strong>{`${user.firstName} ${user.lastName}`}</strong>
             </Link>
           </CurrentUser>
           <NavigationExit>
-            <ExitLink onClick={handleModalVisibility}> Log out </ExitLink>
+            <ExitLink onClick={handleModalVisibility}>
+              <span style={{ fontSize: 32 }} role="img" aria-label="octopus">
+                &#128025;
+              </span>
+            </ExitLink>
           </NavigationExit>
           {modalVisible && (
             <ModalLogout
@@ -65,6 +71,8 @@ const PageHeader = ({ history }) => {
 
 PageHeader.propTypes = {
   history: shape({ push: func.isRequired }).isRequired,
+  user: func.isRequired,
+  logo: String.isRequired,
 }
 
 export default withRouter(PageHeader)
