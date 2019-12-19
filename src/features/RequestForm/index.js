@@ -1,9 +1,10 @@
 import React from 'react'
 import { Row, Tabs } from 'antd'
 
-import RequestMaterials from 'features/RequestForm/RequestMaterials'
-import RequestVacation from 'features/RequestForm/RequestVacation'
 import { requestMaterialsTitle, requestVacationTitle } from 'features/constants'
+import { setTypeForm } from 'common/utils'
+import listMaterials from 'pages/portal/formListMaterials'
+import listVacation from 'pages/portal/formListVacation'
 
 const { TabPane } = Tabs
 const RequestForm = () => (
@@ -17,10 +18,10 @@ const RequestForm = () => (
       size="large"
     >
       <TabPane tab={requestMaterialsTitle} key="1">
-        <RequestMaterials />
+        {setTypeForm(listMaterials, requestMaterialsTitle)}
       </TabPane>
       <TabPane tab={requestVacationTitle} key="2">
-        <RequestVacation />
+        {setTypeForm(listVacation, requestVacationTitle)}
       </TabPane>
     </Tabs>
   </Row>

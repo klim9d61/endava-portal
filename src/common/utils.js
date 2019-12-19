@@ -21,6 +21,7 @@ import {
   typeSelect,
   typeTextarea,
 } from 'features/constants'
+import RequestTemplates from 'features/RequestForm/RequestTemplates'
 
 const { Item, SubMenu } = Menu
 
@@ -65,10 +66,18 @@ export const MenuCreator = menuListItems =>
 
 // Request form add to localStorage
 export const setDataLocalStorage = (values, request) => {
-  const existingRequest = JSON.parse(localStorage.getItem(request)) || []
-  existingRequest.push(values)
+  let existingRequest = JSON.parse(localStorage.getItem(request)) || []
+  existingRequest = [...existingRequest, values]
   localStorage.setItem(request, JSON.stringify(existingRequest))
 }
+
+// Request TPL
+export const setTypeForm = (eventRequestList, eventRequestType) => (
+  <RequestTemplates
+    eventRequestList={eventRequestList}
+    eventRequestType={eventRequestType}
+  />
+)
 
 // Form Creator
 export const requestForm = (listMaterials, getFieldDecorator) => {
@@ -94,13 +103,14 @@ export const requestForm = (listMaterials, getFieldDecorator) => {
         <span>
           {label}
           &nbsp;
-          {tooltip ? (
+          {tooltip && (
             <Tooltip title={label}>
               <Icon type="question-circle-o" />
             </Tooltip>
-          ) : null}
+          )}
         </span>
       )
+
       const fieldRules = [
         { required, message, whitespace, type: typeSelectOption },
       ]
@@ -114,6 +124,7 @@ export const requestForm = (listMaterials, getFieldDecorator) => {
               })(<Input />)}
             </Form.Item>
           )
+
         case typeTextarea:
           return (
             <Form.Item key={id} label={labelField}>
@@ -122,6 +133,7 @@ export const requestForm = (listMaterials, getFieldDecorator) => {
               })(<TextArea />)}
             </Form.Item>
           )
+
         case typeSelect:
           return (
             <Form.Item key={id} label={labelField} hasFeedback>
@@ -138,6 +150,7 @@ export const requestForm = (listMaterials, getFieldDecorator) => {
               )}
             </Form.Item>
           )
+
         case typeMultipleSelect:
           return (
             <Form.Item key={id} label={labelField}>
@@ -154,6 +167,7 @@ export const requestForm = (listMaterials, getFieldDecorator) => {
               )}
             </Form.Item>
           )
+
         case rangePickerSelect:
           return (
             <Form.Item key={id} label={labelField}>
@@ -162,6 +176,7 @@ export const requestForm = (listMaterials, getFieldDecorator) => {
               })(<RangePicker />)}
             </Form.Item>
           )
+
         case typeButton:
           return (
             <Form.Item key={id} wrapperCol={{ span: 12, offset: 5 }}>
@@ -170,6 +185,7 @@ export const requestForm = (listMaterials, getFieldDecorator) => {
               </Button>
             </Form.Item>
           )
+
         default:
           return <div>Field doesn&apos;t exist</div>
       }

@@ -18,6 +18,7 @@ const RequestTemplates = ({ form, eventRequestList, eventRequestType }) => {
       }
     })
   }
+
   return (
     <Form
       labelCol={{ span: 5 }}

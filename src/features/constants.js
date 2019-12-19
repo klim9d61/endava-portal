@@ -18,5 +18,3 @@ export const typeSelect = 'Select'
 export const typeMultipleSelect = 'Multiple'
 export const typeButton = 'Button'
 export const rangePickerSelect = 'RangePickerSelect'
-
-export default null
