@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Spin } from 'antd'
 
+import EventModal from './calendar-modal'
 import config from './calendarConfig'
 import {
   CalendarEventsContainer,
@@ -21,6 +22,9 @@ const {
 
 const CalendarRBC = () => {
   const [isLoading, setIsLoading] = useState(true)
+  const [modalVisibility, setModalVisibility] = useState(false)
+  const [inputValue, setInputValue] = useState('')
+  const [currentEvent, setCurrentEvent] = useState({})
   const [calendarEvents, setCalendarEvents] = useState(
     JSON.parse(localStorage.getItem('CalendarStorageEvents')) || tempEvents,
   )
@@ -36,17 +40,32 @@ const CalendarRBC = () => {
     setIsLoading(false)
   }, 750)
 
-  const handleSelect = ({ start, end }) => {
+  const handleInput = e => {
+    setInputValue(e.target.value)
+  }
+
+  const handleModalOpen = ({ start, end }) => {
     if (start.getDate() >= defaultDate.getDate()) {
-      // eslint-disable-next-line no-alert
-      const title = prompt('New Event name')
-      if (title) {
-        setCalendarEvents([...calendarEvents, { start, end, title }])
-      }
+      setModalVisibility(true)
+      setCurrentEvent({ start, end })
     }
   }
 
-  const handleEvent = ({ title }) => {
+  const handleOk = () => {
+    setModalVisibility(false)
+    if (inputValue) {
+      setCurrentEvent(Object.assign(currentEvent, { title: inputValue }))
+      setCalendarEvents([...calendarEvents, currentEvent])
+    }
+    setCurrentEvent({})
+    setInputValue('')
+  }
+
+  const handleCancel = () => {
+    setModalVisibility(false)
+  }
+
+  const removeEvent = ({ title }) => {
     setCalendarEvents(
       calendarEvents.filter(eventTarget => eventTarget.title !== title),
     )
@@ -59,6 +78,13 @@ const CalendarRBC = () => {
           Number of events:
           {calendarEvents.length}
         </CurrentEventsNumber>
+        <EventModal
+          visible={modalVisibility}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          value={inputValue}
+          onChange={handleInput}
+        />
         <StyledCalendar
           defaultDate={defaultDate}
           drilldownView={drilldownView}
@@ -67,8 +93,8 @@ const CalendarRBC = () => {
           selectable={selectable}
           localizer={localizer}
           resizable={resizable}
-          onSelectSlot={handleSelect}
-          onDoubleClickEvent={handleEvent}
+          onSelectSlot={handleModalOpen}
+          onDoubleClickEvent={removeEvent}
         />
       </Spin>
     </CalendarEventsContainer>
