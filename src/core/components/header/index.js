@@ -30,6 +30,7 @@ const PageHeader = props => {
 
   const handleModalVisibility = () => setModalVisible(!modalVisible)
   const link = `/profile/${user.id}`
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'))
 
   return (
     <StyledNavigationBar>
@@ -38,7 +39,7 @@ const PageHeader = props => {
           <img src={Logo} alt="nav-logo" />
         </Link>
       </NavigationLogo>
-      {user && (
+      {currentUser && (
         <NavigationUserInfo>
           <CurrentUser>
             <Link to={link}>
@@ -72,7 +73,7 @@ const PageHeader = props => {
 PageHeader.propTypes = {
   history: shape({ push: func.isRequired }).isRequired,
   user: func.isRequired,
-  logo: string.isRequired,
+  logo: string,
 }
 
 export default withRouter(PageHeader)

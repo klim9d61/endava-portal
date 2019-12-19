@@ -25,7 +25,7 @@ const Profile = () => {
   const [project, setProject] = useState(user.project)
   useEffect(() => {
     setLogo(`${user.logo}?img=${id}`)
-  }, [])
+  }, [user.logo, id, setLogo])
 
   const loadImage = event => {
     const img = URL.createObjectURL(event.target.files[0])

@@ -1,4 +1,4 @@
-const user = JSON.parse(localStorage.getItem('currentUser'))
+const user = JSON.parse(localStorage.getItem('currentUser')) || { id: 1 }
 
 const menuList = [
   {
