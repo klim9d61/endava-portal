@@ -1,11 +1,13 @@
 import React from 'react'
 import { Row, Tabs } from 'antd'
 
-import MaterialIts from 'features/RequestMaterials'
-import RequestEvents from 'features/RequestEvents'
+import { requestMaterialsTitle, requestVacationTitle } from 'features/constants'
+import { setTypeForm } from 'common/utils'
+import listMaterials from 'pages/portal/formListMaterials'
+import listVacation from 'pages/portal/formListVacation'
 
 const { TabPane } = Tabs
-const Request = () => (
+const RequestForm = () => (
   <Row type="flex" justify="center">
     <Tabs
       style={{
@@ -15,14 +17,14 @@ const Request = () => (
       defaultActiveKey="1"
       size="large"
     >
-      <TabPane tab="Tab 1" key="1">
-        <MaterialIts />
+      <TabPane tab={requestMaterialsTitle} key="1">
+        {setTypeForm(listMaterials, requestMaterialsTitle)}
       </TabPane>
-      <TabPane tab="Tab 2" key="2">
-        <RequestEvents />
+      <TabPane tab={requestVacationTitle} key="2">
+        {setTypeForm(listVacation, requestVacationTitle)}
       </TabPane>
     </Tabs>
   </Row>
 )
 
-export default Request
+export default RequestForm

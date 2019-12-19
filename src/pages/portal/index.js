@@ -3,9 +3,8 @@ import { Layout } from 'antd'
 import { Redirect, Route, Switch } from 'react-router'
 
 import {
-  CalendarRBC,
-  Vacations,
-  RequestMaterials,
+  Calendar,
+  RequestForm,
   News,
   Notifications,
   Profile,
@@ -27,9 +26,8 @@ function PortalPage() {
             <Route exact path="/admin" component={Admin} />
             <Route exact path="/admin/users" component={Users} />
             <Route exact path="/admin/events" component={Events} />
-            <Route exact path="/calendar" component={CalendarRBC} />
-            <Route exact path="/vacations" component={Vacations} />
-            <Route exact path="/materials" component={RequestMaterials} />
+            <Route exact path="/calendar" component={Calendar} />
+            <Route exact path="/request" component={RequestForm} />
             <Route exact path="/notifications" component={Notifications} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/" component={News} />
