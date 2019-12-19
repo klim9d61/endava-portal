@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { shape, func, string } from 'prop-types'
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PrivateRoute = ({ component: Component, roles, ...rest }) => {
   return (
     <Route
       {...rest}
@@ -11,12 +11,13 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         if (!user) {
           return (
             <Redirect
-              to={{
-                pathname: '/login',
-                state: { from: props.location },
-              }}
+              to={{ pathname: '/login', state: { from: props.location } }}
             />
           )
+        }
+
+        if (roles && roles.indexOf(user.role) === -1) {
+          return <Redirect to={{ pathname: '/403' }} />
         }
         return <Component {...props} />
       }}
@@ -28,12 +29,14 @@ PrivateRoute.propTypes = {
   location: shape({
     pathname: string.isRequired,
   }),
+  roles: string,
 }
 
 PrivateRoute.defaultProps = {
   location: {
     pathname: '',
   },
+  roles: '',
 }
 
 export default PrivateRoute
