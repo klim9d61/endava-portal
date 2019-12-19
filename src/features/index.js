@@ -4,7 +4,7 @@ import News from 'features/news-page'
 import Profile from 'features/profile-page'
 import RequestMaterials from 'features/RequestForm'
 
-import Admin, { Users, Events } from './admin'
+import Admin from './admin'
 import Notifications from './notifications'
 import CalendarRBC from './calendar-events'
 
@@ -18,6 +18,4 @@ export {
   News,
   Profile,
   Admin,
-  Users,
-  Events,
 }
