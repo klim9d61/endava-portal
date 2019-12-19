@@ -5,20 +5,21 @@ const localizer = momentLocalizer(moment)
 const defaultDate = new Date()
 
 const config = {
+  spinSize: 'large',
   defaultDate,
   drilldownView: 'agenda',
   defaultView: 'month',
-  events: [
+  localizer,
+  selectable: true,
+  resizable: true,
+  tempEvents: [
     {
-      start: new Date(2019, 11, 12),
-      end: new Date(2019, 11, 12),
-      title: 'XMAS Party',
+      start: new Date('2019, 12, 31'),
+      end: new Date('2020, 01, 01'),
+      title: 'Happy New Year',
       allDay: true,
     },
   ],
-  localizer,
-  resizable: true,
-  style: { padding: '2rem', width: '90%', margin: '0 auto', height: '85vh' },
 }
 
 export default config

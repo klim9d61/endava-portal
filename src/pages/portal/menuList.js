@@ -39,14 +39,8 @@ const menuList = [
     submenu: [],
   },
   {
-    path: '/vacations',
-    name: 'Vacations',
-    icon: 'schedule',
-    submenu: [],
-  },
-  {
-    path: '/materials',
-    name: 'Materials',
+    path: '/request',
+    name: 'Request',
     icon: 'tool',
     submenu: [],
   },
