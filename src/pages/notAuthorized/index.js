@@ -7,7 +7,6 @@ const NotAuthorized = ({ history }) => {
   return (
     <div style={{ padding: '40px 0' }}>
       <Result
-        style={{ zoom: '1.1' }}
         icon={<Icon style={{ fontSize: '90px' }} type="lock" theme="filled" />}
         title="403"
         subTitle="Sorry, you are not authorized to access this page."

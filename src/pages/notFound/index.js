@@ -7,7 +7,7 @@ const NotFoundPage = ({ history }) => {
   return (
     <div style={{ padding: '40px 0', height: '100vh' }}>
       <Result
-        style={{ paddingTop: '80px', zoom: '1.1' }}
+        style={{ paddingTop: '80px' }}
         icon={<Icon style={{ fontSize: '90px' }} type="frown" theme="filled" />}
         title="404"
         subTitle="The page you visited does not exist."
