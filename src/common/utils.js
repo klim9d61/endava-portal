@@ -25,13 +25,47 @@ import RequestTemplates from 'features/RequestForm/RequestTemplates'
 
 const { Item, SubMenu } = Menu
 
+export const getDataLocalStorage = type =>
+  JSON.parse(window.localStorage.getItem('currentUser'))[type]
+
+const getRoleAccessLevel = role => {
+  switch (role) {
+    case 'admin':
+      return 1
+    case 'user':
+      return 0
+    default:
+      return 0
+  }
+}
+
 // Menu Creator
-export const MenuCreator = menuListItems =>
-  menuListItems.map(({ submenu, path, name, icon }) =>
-    submenu.length ? (
-      <SubMenu
-        key={shortId.generate()}
-        title={
+export const MenuCreator = menuListItems => {
+  const roleAccessLevel = getRoleAccessLevel(getDataLocalStorage('role'))
+
+  return menuListItems.map(({ submenu, path, name, icon, accessLevel }) =>
+    roleAccessLevel >= accessLevel ? (
+      submenu.length ? (
+        <SubMenu
+          key={shortId.generate()}
+          title={
+            <NavLink
+              exact
+              to={path}
+              activeStyle={{
+                fontWeight: 'bold',
+                color: 'red',
+              }}
+            >
+              <Icon type={icon} />
+              <span>{name}</span>
+            </NavLink>
+          }
+        >
+          {MenuCreator(submenu)}
+        </SubMenu>
+      ) : (
+        <Item key={shortId.generate()}>
           <NavLink
             exact
             to={path}
@@ -43,26 +77,11 @@ export const MenuCreator = menuListItems =>
             <Icon type={icon} />
             <span>{name}</span>
           </NavLink>
-        }
-      >
-        {MenuCreator(submenu)}
-      </SubMenu>
-    ) : (
-      <Item key={shortId.generate()}>
-        <NavLink
-          exact
-          to={path}
-          activeStyle={{
-            fontWeight: 'bold',
-            color: 'red',
-          }}
-        >
-          <Icon type={icon} />
-          <span>{name}</span>
-        </NavLink>
-      </Item>
-    ),
+        </Item>
+      )
+    ) : null,
   )
+}
 
 // Request form add to localStorage
 export const setDataLocalStorage = (values, request) => {
