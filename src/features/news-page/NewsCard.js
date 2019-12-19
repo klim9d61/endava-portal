@@ -64,7 +64,6 @@ const NewsCard = ({
 }
 
 NewsCard.propTypes = {
-  // eslint-disable-next-line react/require-default-props
   observer: PropTypes.func,
   author: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -73,6 +72,10 @@ NewsCard.propTypes = {
   published: PropTypes.string.isRequired,
   sourceUrl: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+}
+
+NewsCard.defaultProps = {
+  observer: null,
 }
 
 export default NewsCard

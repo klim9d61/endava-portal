@@ -192,5 +192,3 @@ export const requestForm = (listMaterials, getFieldDecorator) => {
     },
   )
 }
-
-export default null
