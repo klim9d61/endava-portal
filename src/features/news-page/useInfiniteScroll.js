@@ -19,7 +19,7 @@ const useInfiniteScroll = pageNumber => {
         setLoading(false)
 
         const notifications = news.articles.reduce(
-          (acc, { title, content, description, urlToImage }, i) => {
+          (acc, { title, content, description, urlToImage }) => {
             return [
               ...acc,
               {
