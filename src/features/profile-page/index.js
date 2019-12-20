@@ -19,17 +19,19 @@ const { Paragraph } = Typography
 const Profile = () => {
   const { id } = useParams()
 
-  const [currentUser, logo, setLogo] = useContext(MyContext)
+  const [currentUser, logo, setLogo, setUser, setFlag] = useContext(MyContext)
 
   const user = users.find(x => x.id === Number(id)) || currentUser
   const [project, setProject] = useState(user.project)
   useEffect(() => {
     setLogo(`${user.logo}?img=${id}`)
-  }, [])
+  }, [user.logo, id, setLogo])
 
   const loadImage = event => {
     const img = URL.createObjectURL(event.target.files[0])
+    setFlag(true)
     setLogo(img)
+    setUser({ ...user, logo: img })
   }
   const onChange = str => {
     setProject(str)
