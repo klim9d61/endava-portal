@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Switch, Route, useParams } from 'react-router'
+import { Switch, Route } from 'react-router'
 import { Layout } from 'antd'
 
 import { Content } from 'common/ui-kit'
@@ -10,8 +10,20 @@ import PrivateRoute from 'common/components/routes/PrivateRoute'
 export const MyContext = React.createContext(null)
 
 function App() {
-  const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+  const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {
+    id: 4,
+    firstName: `Jack`,
+    lastName: `Cordon`,
+    username: `admin`,
+    password: `1234`,
+    role: `admin`,
+    project: `-`,
+    position: `-`,
+    birthday: `16/07/92`,
+  }
+
   const [user, setUser] = useState(currentUser)
+  const [flag, setFlag] = useState(false)
   const [logo, setLogo] = useState(`${user.logo}?img=${user.id}`)
 
   return (
@@ -22,7 +34,6 @@ function App() {
           <Switch>
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/404" component={NotFoundPage} />
-
             <PrivateRoute path="/*" component={PortalPage} />
           </Switch>
         </Content>

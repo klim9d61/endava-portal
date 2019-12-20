@@ -18,7 +18,7 @@ import {
 const PageHeader = props => {
   const [modalVisible, setModalVisible] = useState(false)
 
-  const { history, user, logo } = props
+  const { history, user, flag } = props
 
   const handleLogout = () => {
     setModalVisible(false)
@@ -30,6 +30,7 @@ const PageHeader = props => {
 
   const handleModalVisibility = () => setModalVisible(!modalVisible)
   const link = `/profile/${user.id}`
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'))
 
   return (
     <StyledNavigationBar>
@@ -38,11 +39,14 @@ const PageHeader = props => {
           <img src={Logo} alt="nav-logo" />
         </Link>
       </NavigationLogo>
-      {user && (
+      {currentUser && (
         <NavigationUserInfo>
           <CurrentUser>
             <Link to={link}>
-              <img src={logo} alt="logo-img" />
+              <img
+                src={flag ? user.logo : `${user.logo}?img=${user.id}`}
+                alt="logo-img"
+              />
               <strong>{`${user.firstName} ${user.lastName}`}</strong>
             </Link>
           </CurrentUser>
