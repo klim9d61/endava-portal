@@ -27,9 +27,9 @@ function App() {
   const [logo, setLogo] = useState(`${user.logo}?img=${user.id}`)
 
   return (
-    <MyContext.Provider value={[user, logo, setLogo, setUser, setFlag]}>
+    <MyContext.Provider value={[user, logo, setLogo]}>
       <Layout>
-        <Header user={user} logo={logo} flag={flag} />
+        <Header user={user} setUser={setUser} logo={logo} />
         <Content>
           <Switch>
             <Route exact path="/login" component={LoginPage} />

@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Collapse } from 'antd'
 
+import { defaultImg } from './constants'
+
 import {
   StyledCard,
   StyledCardContainer,
@@ -28,7 +30,7 @@ const NewsCard = ({
           showArrow={false}
           header={
             <StyledCard style={{ margin: '20px 0' }} title={title}>
-              <img style={{ width: '20%' }} alt="IMG" src={img} />
+              <img style={{ width: '20%' }} alt="IMG" src={img || defaultImg} />
               <StyledCardContent>
                 <br />
                 {description}

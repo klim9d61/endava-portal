@@ -75,7 +75,7 @@ const PageHeader = props => {
 
 PageHeader.propTypes = {
   history: shape({ push: func.isRequired }).isRequired,
-  user: func,
+  user: func.isRequired,
   logo: string,
 }
 
