@@ -12,11 +12,7 @@
     "plugin:import/warnings"
   ],
 
-  "plugins": [
-    "react",
-    "prettier",
-    "import"
-  ],
+  "plugins": ["react", "prettier", "import"],
 
   "globals": {
     "Atomics": "readonly",
@@ -33,11 +29,10 @@
   "rules": {
     "prettier/prettier": "error",
     "react/jsx-wrap-multilines": 0,
-    "camelcase": [0, {"properties": "never"}],
+    "camelcase": [0, { "properties": "never" }],
     "no-shadow": [0, { "allow": ["state"] }],
-    "react/jsx-filename-extension": [
-      0
-    ],
+    "no-nested-ternary": "off",
+    "react/jsx-filename-extension": [0],
     "indent": [
       "error",
       2,
@@ -45,10 +40,7 @@
         "SwitchCase": 1
       }
     ],
-    "react/jsx-indent": [
-      "error",
-      2
-    ],
+    "react/jsx-indent": ["error", 2],
     "import/order": [
       "error",
       {
@@ -68,9 +60,7 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "paths": [
-          "src"
-        ]
+        "paths": ["src"]
       }
     }
   }
