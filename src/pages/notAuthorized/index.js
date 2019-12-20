@@ -3,14 +3,13 @@ import { Result, Icon } from 'antd'
 
 import { FormButton } from '../login/styles'
 
-const NotFoundPage = ({ history }) => {
+const NotAuthorized = ({ history }) => {
   return (
-    <div style={{ padding: '40px 0', height: '100vh' }}>
+    <div style={{ padding: '40px 0' }}>
       <Result
-        style={{ paddingTop: '80px' }}
-        icon={<Icon style={{ fontSize: '90px' }} type="frown" theme="filled" />}
-        title="404"
-        subTitle="The page you visited does not exist."
+        icon={<Icon style={{ fontSize: '90px' }} type="lock" theme="filled" />}
+        title="403"
+        subTitle="Sorry, you are not authorized to access this page."
         extra={
           <FormButton
             style={{ width: '150px' }}
@@ -25,4 +24,4 @@ const NotFoundPage = ({ history }) => {
   )
 }
 
-export default NotFoundPage
+export default NotAuthorized

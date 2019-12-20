@@ -16,7 +16,6 @@ const NotificationsContainer = styled(List)`
 
     &:hover {
       background-color: #fcfafa;
-      transform: scale(1.01);
     }
   }
 

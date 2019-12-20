@@ -64,6 +64,7 @@ const CalendarRBC = () => {
 
   const handleCancel = () => {
     setModalVisibility(false)
+    setInputValue('')
   }
 
   const removeEvent = ({ title }) => {
