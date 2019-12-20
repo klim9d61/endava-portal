@@ -25,9 +25,6 @@ import RequestTemplates from 'features/RequestForm/RequestTemplates'
 
 const { Item, SubMenu } = Menu
 
-const currentUser = JSON.parse(localStorage.getItem('currentUser'))
-
-
 export const getDataLocalStorage = type => {
   try {
     return JSON.parse(window.localStorage.getItem('currentUser'))[type]
@@ -114,19 +111,19 @@ export const requestForm = (listMaterials, getFieldDecorator) => {
   const { RangePicker } = DatePicker
   return listMaterials.map(
     ({
-       id,
-       label,
-       tooltip,
-       nameStore,
-       required,
-       message,
-       whitespace,
-       typeField,
-       htmlType,
-       type,
-       selectOption,
-       typeSelectOption,
-     }) => {
+      id,
+      label,
+      tooltip,
+      nameStore,
+      required,
+      message,
+      whitespace,
+      typeField,
+      htmlType,
+      type,
+      selectOption,
+      typeSelectOption,
+    }) => {
       const labelField = (
         <span>
           {label}
