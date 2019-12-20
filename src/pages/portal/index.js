@@ -1,8 +1,8 @@
 import React from 'react'
 import { Layout } from 'antd'
 import { Redirect, Route, Switch } from 'react-router'
-import PrivateRoute from 'common/components/routes/PrivateRoute'
 
+import PrivateRoute from 'common/components/routes/PrivateRoute'
 import {
   Calendar,
   RequestForm,
@@ -10,13 +10,11 @@ import {
   Notifications,
   Profile,
   Admin,
-  Users,
-  Events,
 } from 'features'
 import { Content } from 'common/ui-kit'
 
-import Sidebar from './components/sidebar'
 import NotAuthorized from '../notAuthorized'
+import Sidebar from './components/sidebar'
 
 const PortalPage = () => {
   return (
@@ -25,19 +23,7 @@ const PortalPage = () => {
       <Layout>
         <Content>
           <Switch>
-            <PrivateRoute exact path="/admin" roles="admin" component={Admin} />
-            <PrivateRoute
-              exact
-              path="/admin/users"
-              roles="admin"
-              component={Users}
-            />
-            <PrivateRoute
-              exact
-              path="/admin/events"
-              roles="admin"
-              component={Events}
-            />
+            <PrivateRoute path="/admin" roles="admin" component={Admin} />
             <Route exact path="/calendar" component={Calendar} />
             <Route exact path="/request" component={RequestForm} />
             <Route exact path="/notifications" component={Notifications} />
