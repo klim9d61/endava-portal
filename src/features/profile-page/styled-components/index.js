@@ -10,6 +10,7 @@ export const StyledProfileContainer = styled.div`
 `
 
 export const StyledProfileSpan = styled.span`
+  display: flex;
   padding: 8px;
   font-size: 1.25em;
   border-radius: 5px;
@@ -18,7 +19,6 @@ export const StyledProfileSpan = styled.span`
 `
 
 export const StyledProfileContent = styled.div`
-  border-radius: 1rem;
   display: flex;
   margin: 2rem;
   flex-direction: column;

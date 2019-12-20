@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { shape, func } from 'prop-types'
+import { shape, func, string } from 'prop-types'
 import { withRouter } from 'react-router'
 
 import Logo from 'assets/portal-logo.png'
@@ -15,9 +15,10 @@ import {
   ModalLogout,
 } from './styled-components'
 
-const PageHeader = ({ history }) => {
+const PageHeader = props => {
   const [modalVisible, setModalVisible] = useState(false)
-  const user = JSON.parse(localStorage.getItem('currentUser'))
+
+  const { history, user, flag } = props
 
   const handleLogout = () => {
     setModalVisible(false)
@@ -28,6 +29,8 @@ const PageHeader = ({ history }) => {
   }
 
   const handleModalVisibility = () => setModalVisible(!modalVisible)
+  const link = `/profile/${user.id}`
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'))
 
   return (
     <StyledNavigationBar>
@@ -36,16 +39,23 @@ const PageHeader = ({ history }) => {
           <img src={Logo} alt="nav-logo" />
         </Link>
       </NavigationLogo>
-      {user && (
+      {currentUser && (
         <NavigationUserInfo>
           <CurrentUser>
-            <Link to="/profile">
-              <img src={user.logo} alt="logo-img" />
+            <Link to={link}>
+              <img
+                src={flag ? user.logo : `${user.logo}?img=${user.id}`}
+                alt="logo-img"
+              />
               <strong>{`${user.firstName} ${user.lastName}`}</strong>
             </Link>
           </CurrentUser>
           <NavigationExit>
-            <ExitLink onClick={handleModalVisibility}> Log out </ExitLink>
+            <ExitLink onClick={handleModalVisibility}>
+              <span style={{ fontSize: 32 }} role="img" aria-label="octopus">
+                &#128025;
+              </span>
+            </ExitLink>
           </NavigationExit>
           {modalVisible && (
             <ModalLogout
@@ -65,6 +75,8 @@ const PageHeader = ({ history }) => {
 
 PageHeader.propTypes = {
   history: shape({ push: func.isRequired }).isRequired,
+  user: func,
+  logo: string,
 }
 
 export default withRouter(PageHeader)
