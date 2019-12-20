@@ -1,33 +1,104 @@
-import React from 'react'
-import { Calendar } from 'react-big-calendar'
+import React, { useState, useEffect } from 'react'
+import { Spin } from 'antd'
 
+import EventModal from './calendar-modal'
 import config from './calendarConfig'
+import {
+  CalendarEventsContainer,
+  CurrentEventsNumber,
+  StyledCalendar,
+} from './styled-components'
 
-import 'react-big-calendar/lib/css/react-big-calendar.css'
+const {
+  spinSize,
+  defaultDate,
+  drilldownView,
+  defaultView,
+  localizer,
+  selectable,
+  resizable,
+  tempEvents,
+} = config
 
 const CalendarRBC = () => {
-  const {
-    defaultDate,
-    drilldownView,
-    defaultView,
-    events,
-    localizer,
-    resizable,
-    style,
-  } = config
+  const [isLoading, setIsLoading] = useState(true)
+  const [modalVisibility, setModalVisibility] = useState(false)
+  const [inputValue, setInputValue] = useState('')
+  const [currentEvent, setCurrentEvent] = useState({})
+  const [calendarEvents, setCalendarEvents] = useState(
+    JSON.parse(localStorage.getItem('CalendarStorageEvents')) || tempEvents,
+  )
+
+  useEffect(() => {
+    localStorage.setItem(
+      'CalendarStorageEvents',
+      JSON.stringify(calendarEvents),
+    )
+  }, [calendarEvents])
+
+  setTimeout(() => {
+    setIsLoading(false)
+  }, 750)
+
+  const handleInput = e => {
+    setInputValue(e.target.value)
+  }
+
+  const handleModalOpen = ({ start, end }) => {
+    if (start.getDate() >= defaultDate.getDate()) {
+      setModalVisibility(true)
+      setCurrentEvent({ start, end })
+    }
+  }
+
+  const handleOk = () => {
+    setModalVisibility(false)
+    if (inputValue) {
+      const event = { ...currentEvent, title: inputValue }
+      setCurrentEvent(event)
+      setCalendarEvents([...calendarEvents, event])
+    }
+    setCurrentEvent({})
+    setInputValue('')
+  }
+
+  const handleCancel = () => {
+    setModalVisibility(false)
+  }
+
+  const removeEvent = ({ title }) => {
+    setCalendarEvents(
+      calendarEvents.filter(eventTarget => eventTarget.title !== title),
+    )
+  }
 
   return (
-    <div className="calendar-rbc-container" style={{ width: '100%' }}>
-      <Calendar
-        defaultDate={defaultDate}
-        drilldownView={drilldownView}
-        defaultView={defaultView}
-        events={events}
-        localizer={localizer}
-        resizable={resizable}
-        style={style}
-      />
-    </div>
+    <CalendarEventsContainer>
+      <Spin spinning={isLoading} size={spinSize}>
+        <CurrentEventsNumber>
+          Number of events:
+          {calendarEvents.length}
+        </CurrentEventsNumber>
+        <EventModal
+          visible={modalVisibility}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          value={inputValue}
+          onChange={handleInput}
+        />
+        <StyledCalendar
+          defaultDate={defaultDate}
+          drilldownView={drilldownView}
+          defaultView={defaultView}
+          events={calendarEvents}
+          selectable={selectable}
+          localizer={localizer}
+          resizable={resizable}
+          onSelectSlot={handleModalOpen}
+          onDoubleClickEvent={removeEvent}
+        />
+      </Spin>
+    </CalendarEventsContainer>
   )
 }
 

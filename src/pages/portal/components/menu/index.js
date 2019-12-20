@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { SidebarMenu, MenuWrapper } from './styled-components'
 
 import { MenuCreator } from 'common/utils'
+import menuListItems from 'pages/portal/menuList'
 
-import menuListItems from '../../menuList'
+import { SidebarMenu, MenuWrapper } from './styled-components'
 
 const MenuList = () => {
   const [isSticky, setSticky] = useState(false)
@@ -28,7 +28,6 @@ const MenuList = () => {
     <MenuWrapper>
       <SidebarMenu
         theme="dark"
-        defaultSelectedKeys={['1']}
         mode="inline"
         sticky={isSticky ? 'true' : 'false'}
       >

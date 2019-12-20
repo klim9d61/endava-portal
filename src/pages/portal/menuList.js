@@ -1,3 +1,5 @@
+const user = JSON.parse(localStorage.getItem('currentUser'))
+
 const menuList = [
   {
     path: '/admin',
@@ -19,7 +21,7 @@ const menuList = [
     ],
   },
   {
-    path: '/profile',
+    path: `/profile/${user.id}`,
     name: 'Profile',
     icon: 'user',
     submenu: [],
@@ -37,14 +39,8 @@ const menuList = [
     submenu: [],
   },
   {
-    path: '/vacations',
-    name: 'Vacations',
-    icon: 'schedule',
-    submenu: [],
-  },
-  {
-    path: '/materials',
-    name: 'Materials',
+    path: '/request',
+    name: 'Request',
     icon: 'tool',
     submenu: [],
   },

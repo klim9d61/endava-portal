@@ -3,9 +3,8 @@ import { Layout } from 'antd'
 import { Redirect, Route, Switch } from 'react-router'
 
 import {
-  CalendarRBC,
-  Vacations,
-  RequestMaterials,
+  Calendar,
+  RequestForm,
   News,
   Notifications,
   Profile,
@@ -15,7 +14,7 @@ import { Content } from 'common/ui-kit'
 
 import Sidebar from './components/sidebar'
 
-function PortalPage() {
+const PortalPage = () => {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sidebar />
@@ -23,11 +22,10 @@ function PortalPage() {
         <Content>
           <Switch>
             <Route path="/admin" component={Admin} />
-            <Route exact path="/calendar" component={CalendarRBC} />
-            <Route exact path="/vacations" component={Vacations} />
-            <Route exact path="/materials" component={RequestMaterials} />
+            <Route exact path="/calendar" component={Calendar} />
+            <Route exact path="/request" component={RequestForm} />
             <Route exact path="/notifications" component={Notifications} />
-            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/profile/:id" component={Profile} />
             <Route exact path="/" component={News} />
             <Route default>
               <Redirect to="/404" />

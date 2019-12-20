@@ -9,7 +9,12 @@ import { Wrapper, CardTitle, FormButton } from './styles'
 
 const LoginForm = ({ form, history }) => {
   const [loginError, setLoginError] = useState(false)
-  const { getFieldDecorator, getFieldsValue, validateFields } = form
+  const {
+    getFieldDecorator,
+    getFieldsValue,
+    validateFields,
+    isFieldsTouched,
+  } = form
 
   const addToLocalStorage = user => {
     localStorage.setItem(
@@ -41,8 +46,8 @@ const LoginForm = ({ form, history }) => {
       )
       validateFields(err => {
         if (!err && user) addToLocalStorage(user)
-        else setLoginError(!loginError)
       })
+      if (isFieldsTouched(['username', 'password'])) setLoginError(true)
     }, 700)
   }
 
@@ -68,18 +73,15 @@ const LoginForm = ({ form, history }) => {
         </CardTitle>
         <Form onSubmit={handleSubmit} className="login-form">
           {loginError ? (
-            <Alert
-              message="Invalid credentials"
-              description="Your email or password is wrong"
-              type="error"
-            />
-          ) : (
-            ''
-          )}
+            <Alert message="Invalid credentials" type="error" showIcon />
+          ) : null}
           <Form.Item>
             {getFieldDecorator('username', {
               rules: [
-                { required: true, message: 'please input your username' },
+                {
+                  required: true,
+                  message: 'please input your username',
+                },
               ],
             })(
               <Input
@@ -93,7 +95,10 @@ const LoginForm = ({ form, history }) => {
           <Form.Item>
             {getFieldDecorator('password', {
               rules: [
-                { required: true, message: 'please input your password' },
+                {
+                  required: true,
+                  message: 'please input your password',
+                },
               ],
             })(
               <Input
@@ -120,6 +125,8 @@ const LoginForm = ({ form, history }) => {
 LoginForm.propTypes = {
   form: shape({
     getFieldDecorator: func.isRequired,
+    isFieldsTouched: func.isRequired,
+    validateFields: func.isRequired,
   }).isRequired,
   history: shape({
     push: func.isRequired,
