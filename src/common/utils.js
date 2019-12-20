@@ -40,6 +40,7 @@ export const MenuCreator = menuListItems =>
               fontWeight: 'bold',
               color: 'red',
             }}
+            style={{ color: 'rgba(255, 255, 255, 0.65)' }}
           >
             <Icon type={icon} />
             <span>{name}</span>
