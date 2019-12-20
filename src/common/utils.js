@@ -25,8 +25,13 @@ import RequestTemplates from 'features/RequestForm/RequestTemplates'
 
 const { Item, SubMenu } = Menu
 
-export const getDataLocalStorage = type =>
-  JSON.parse(window.localStorage.getItem('currentUser'))[type]
+export const getDataLocalStorage = type => {
+  try {
+    return JSON.parse(window.localStorage.getItem('currentUser'))[type]
+  } catch (err) {
+    return 'user'
+  }
+}
 
 const getRoleAccessLevel = role => {
   switch (role) {
